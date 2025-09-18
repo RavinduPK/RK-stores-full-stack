@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';
 import Dashboard from "./pages/Dashboard.jsx";
@@ -23,11 +23,6 @@ import KitchenPage from './pages/kitchenPage.jsx';
 import CartPage from './pages/cartPage.jsx';
 import PurchasePage from './pages/purchasePage.jsx';
 
-
-
-
-
-
 const annonymy = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN0c2Jwa2JoZnZ6ZGNta21raWF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyMjAwMTksImV4cCI6MjA3MTc5NjAxOX0.YeRpo0f0aLq1TtzMHcaPfSKKNf7rnhohxag9qPI8hEc";
 const supabase = "https://stsbpkbhfvzdcmkmkiav.supabase.co";
 
@@ -36,7 +31,9 @@ function App() {
     <BrowserRouter>
      <Toaster position='top-right'/>
       <Routes>
-       
+        {/* Redirect root path to /register */}
+        <Route path="/" element={<Navigate to="/register" replace />} />
+        
         <Route path="/register" element={<Signup />} />
         <Route path="/login" element={<Login />} /> 
         <Route path="/dashboard" element={<Dashboard />} />
