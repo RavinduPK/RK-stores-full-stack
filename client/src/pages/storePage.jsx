@@ -19,7 +19,6 @@ const categories = [
 ];
 
 function StorePage() {
-  const navigate = useNavigate();
   const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
