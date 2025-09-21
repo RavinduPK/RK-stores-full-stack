@@ -505,12 +505,22 @@ function Dashboard() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <button className="group relative px-12 py-5 bg-white text-blue-600 rounded-full font-black text-lg shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 hover:-translate-y-1 overflow-hidden">
+            <button 
+            onClick={() => {
+              window.location.href = '/products1';
+            }}
+            className="group relative px-12 py-5 bg-white text-blue-600 rounded-full font-black text-lg shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 hover:-translate-y-1 overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
               <span className="relative z-10">Get Started Now</span>
             </button>
             
-            <button className="group px-12 py-5 bg-transparent border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300 hover:scale-105">
+            <button 
+            onClick={() => {
+              window.location.href = 'https://www.google.com/search?q=rk+stores&oq=rk+stores&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgAQyBwgBEAAYgAQyBwgCEAAYgAQyBwgDEAAYgAQyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyDQgHEC4YrwEYxwEYgAQyBwgIEAAYgAQyBwgJEAAYgATSAQkzNzAxajBqMTWoAgiwAgHxBfB8so4RpHFb&sourceid=chrome&ie=UTF-8';
+              {/* open in new tab */}
+              target_blank = "_blank";
+            }}
+            className="group px-12 py-5 bg-transparent border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300 hover:scale-105">
               Learn More
               <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
             </button>

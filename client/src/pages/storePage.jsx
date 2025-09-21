@@ -109,17 +109,21 @@ function StorePage() {
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <div
-              className="flex items-center space-x-2 cursor-pointer"
-              onClick={() => navigate("/dashboard")} // ✅ Navigate to dashboard
-            >
-              <div className="w-10 h-10 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold">RK</span>
+             <div className="flex items-center space-x-3 group">
+              <div className="relative">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                  <span className="text-white font-black text-lg">RK</span>
+                </div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity blur-sm"></div>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                RK Stores
-              </span>
+              <div>
+                <span className="text-2xl font-black bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 bg-clip-text text-transparent">
+                  RK Stores
+                </span>
+                <div 
+                onClick={() => navigate("/dashboard")}
+                className="text-xs text-blue-600 font-medium">Premium Collection</div>
+              </div>
             </div>
 
             {/* Search Bar */}
