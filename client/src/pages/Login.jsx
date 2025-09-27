@@ -97,9 +97,7 @@ function Login() {
         <div className="w-full md:w-2/3 p-10 flex flex-col justify-center">
           <div className="max-w-md mx-auto w-full">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-4 shadow-lg shadow-blue-500/25">
-                <Sparkles className="w-8 h-8 text-white" />
-              </div>
+            
               <h1 className="text-3xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent mb-2">
                 Sign In
               </h1>

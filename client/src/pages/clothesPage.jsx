@@ -16,12 +16,11 @@ const clothes = [
     img: "https://images.unsplash.com/photo-1520975918318-3f1124c4b6c5?q=80&w=1200&auto=format&fit=crop",
     sizes: ["S", "M", "L", "XL"],
     material: "Denim",
-    colors: ["#1f2937", "#4b5563", "#9ca3af"],
+    colors: ["#1f2937", "#4b5563"],
     rating: 4.8,
     reviews: 124,
-    badge: "Popular",
     inStock: true,
-    trending: true,
+   
   },
   {
     id: 2,

@@ -92,7 +92,7 @@ const categories = [
 function StorePage() {
   const [cartCount, setCartCount] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
-  const navigate = useNavigate(); // ✅ React Router navigation
+  const navigate = useNavigate(); //  React Router navigation
 
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -228,9 +228,7 @@ function StorePage() {
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500"></div>
-                    <div
-                      className={`absolute top-4 right-4 w-3 h-3 bg-gradient-to-r ${category.color} rounded-full group-hover:scale-110 transition-all duration-300`}
-                    ></div>
+                  
                   </div>
 
                   {/* Content */}
@@ -249,7 +247,7 @@ function StorePage() {
                     {/* Browse Now Button */}
                     <div className="mt-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                       <button
-                        onClick={() => navigate(category.link)} // ✅ Navigates to category page
+                        onClick={() => navigate(category.link)} //  Navigates to category page
                         className={`px-4 py-2 bg-gradient-to-r ${category.color} text-white rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105`}
                       >
                         Browse Now →
