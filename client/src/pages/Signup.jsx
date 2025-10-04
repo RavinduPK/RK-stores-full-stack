@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import backgroundImage from "../assets/cart.jpg";
+
+
+
 import {
   Eye,
   EyeOff,
@@ -36,26 +40,24 @@ function Signup() {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center relative bg-white overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-400/20 to-indigo-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-r from-cyan-300/20 to-blue-300/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-indigo-300/10 to-blue-300/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-      </div>
+  <div
+  className="min-h-screen w-full flex items-center justify-center relative bg-no-repeat bg-center"
+  style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: '100%' }}
+>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black opacity-30"></div>
 
       {/* Main Card */}
-      <div className="relative w-full max-w-5xl flex flex-col xl:flex-row bg-blue-200 backdrop-blur-xl border border-blue-200 rounded-3xl shadow-2xl overflow-hidden z-10 h-[34rem]">
+     <div className="relative w-1xl  flex flex-col md:flex-row backdrop-blur-sm border rounded-3xl shadow-2xl overflow-hidden z-10">
         {/* Left Side - Signup Form */}
-        <div className="w-full xl:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+        <div className="w-full xl:w-2/2 p-5 lg:p-12 flex flex-col justify-center">
           <div className="max-w-md mx-auto w-full">
             {/* Header */}
             <div className="text-center mb-8">
-             
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent mb-2">
+              <h1 className="text-4xl font-bold bg-white bg-clip-text text-transparent mb-2">
                 Create Account
               </h1>
-              <p className="text-slate-500 text-lg">
+              <p className="text-white text-lg">
                 Join RK Stores and start your journey
               </p>
             </div>
@@ -184,7 +186,7 @@ function Signup() {
 
             {/* Footer */}
             <div className="mt-6 text-center">
-              <span className="text-slate-500">Already have an account? </span>
+              <span className="text-white">Already have an account? </span>
               <button
                 type="button"
                 disabled={loading}
@@ -197,67 +199,6 @@ function Signup() {
           </div>
         </div>
 
-        {/* Right Side - Welcome & Features */}
-        <div className="hidden xl:flex w-1/2 flex-col justify-center items-center p-10 bg-gradient-to-br from-blue-50 via-indigo-50 to-cyan-50 relative overflow-hidden h-[34rem]">
-          {/* Logo Section */}
-          <div className="relative text-center max-w-md z-10">
-            <div className="mb-8">
-              <div className="inline-block bg-gradient-to-r from-white to-blue-50/50 rounded-3xl backdrop-blur-sm mb-5 shadow-xl shadow-blue-500/10 border border-white/50">
-                <div className="w-17 h-17 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/25">
-                  <span className="text-4xl font-bold text-white">RK</span>
-                </div>
-              </div>
-
-              <h2 className="text-4xl font-bold mb-3">
-                <span className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent">
-                  Welcome to
-                </span>
-                <span className="bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text text-transparent block ">
-                  RK Stores
-                </span>
-              </h2>
-
-              <p className="text-slate-600 text-lg   leading-relaxed font-medium">
-                Discover amazing products, exclusive deals, and a shopping
-                experience like no other.
-              </p>
-            </div>
-
-            {/* Features */}
-            <div className="space-y-1">
-              <div className="flex items-center text-slate-700 bg-white/50 rounded-2xl p-3 backdrop-blur-sm border border-white/60 hover:bg-white/70 transition-all duration-300">
-                <div className="w-10 h-6 bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-emerald-500/20">
-                  <Check className="w-5 h-5 text-white" />
-                </div>
-                <span className="font-semibold">
-                  Exclusive member discounts
-                </span>
-              </div>
-
-              <div className="flex items-center text-slate-700 bg-white/50 rounded-2xl p-3 backdrop-blur-sm border border-white/60 hover:bg-white/70 transition-all duration-300">
-                <div className="w-10 h-8 bg-gradient-to-r from-blue-400 to-blue-500 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-blue-500/20">
-                  <Shield className="w-5 h-5 text-white" />
-                </div>
-                <span className="font-semibold">Fast & secure checkout</span>
-              </div>
-
-              <div className="flex items-center text-slate-700 bg-white/50 rounded-2xl p-3 backdrop-blur-sm border border-white/60 hover:bg-white/70 transition-all duration-300">
-                <div className="w-10 h-8 bg-gradient-to-r from-indigo-400 to-indigo-500 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-indigo-500/20">
-                  <Star className="w-5 h-5 text-white" />
-                </div>
-                <span className="font-semibold">24/7 customer support</span>
-              </div>
-            </div>
-
-            {/* Trust Badge */}
-            <div className="mt-4 text-center">
-              <p className="text-slate-500 text-sm mb-2">Trusted by</p>
-              <p className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text text-transparent">
-                10,000+ customers
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

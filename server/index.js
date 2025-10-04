@@ -16,7 +16,7 @@ app.use(express.json());
 // --------------------- MONGODB CONNECTION ---------------------
 const PORT = process.env.PORT || 3001;
 mongoose
-  .connect("mongodb://localhost:27017/cbc-bc", {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -36,12 +36,15 @@ const User = mongoose.model("User", userSchema);
 
 // --------------------- ORDER SCHEMA & MODEL ---------------------
 const orderSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   name: String,
   price: String,
   selectedSize: String,
   selectedColor: String,
   email: String,
   phone: String,
+  paymentMethod: String,
+  status: { type: String, default: "Pending" },
   createdAt: { type: Date, default: Date.now },
 });
 const Order = mongoose.model("Order", orderSchema);
@@ -65,7 +68,8 @@ const authMiddleware = (req, res, next) => {
 // Register
 app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
-  if (!name || !email || !password) return res.status(400).json({ error: "All fields are required" });
+  if (!name || !email || !password)
+    return res.status(400).json({ error: "All fields are required" });
 
   try {
     const existingUser = await User.findOne({ email });
@@ -76,6 +80,7 @@ app.post("/register", async (req, res) => {
     await newUser.save();
     res.json({ message: "Registration successful" });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Server error" });
   }
 });
@@ -83,7 +88,8 @@ app.post("/register", async (req, res) => {
 // Login
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  if (!email || !password) return res.status(400).json({ error: "Email and password required" });
+  if (!email || !password)
+    return res.status(400).json({ error: "Email and password required" });
 
   try {
     const user = await User.findOne({ email });
@@ -92,9 +98,15 @@ app.post("/login", async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ error: "Invalid credentials" });
 
-    const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "1h" });
+    const token = jwt.sign(
+      { id: user._id, email: user.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+
     res.json({ message: "Login successful", token });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Server error" });
   }
 });
@@ -103,7 +115,8 @@ app.post("/login", async (req, res) => {
 app.post("/contact", async (req, res) => {
   try {
     const { name, email, phone, message } = req.body;
-    if (!name || !email || !phone || !message) return res.status(400).json({ error: "All fields are required" });
+    if (!name || !email || !phone || !message)
+      return res.status(400).json({ error: "All fields are required" });
 
     const newContact = new Contact({ name, email, phone, message });
     await newContact.save();
@@ -124,7 +137,7 @@ app.get("/profile", authMiddleware, async (req, res) => {
   }
 });
 
-// --------------------- ORDER ROUTE ---------------------
+// --------------------- ORDER ROUTES ---------------------
 app.post("/orders", authMiddleware, async (req, res) => {
   try {
     const { name, price, selectedSize, selectedColor, email, phone, paymentMethod } = req.body;
@@ -154,7 +167,6 @@ app.post("/orders", authMiddleware, async (req, res) => {
   }
 });
 
-
 app.get("/orders", authMiddleware, async (req, res) => {
   try {
     const orders = await Order.find({ userId: req.user.id }).sort({ createdAt: -1 });
@@ -164,4 +176,3 @@ app.get("/orders", authMiddleware, async (req, res) => {
     res.status(500).json({ error: "Failed to fetch orders" });
   }
 });
-

@@ -3,6 +3,7 @@ import { CgProfile } from "react-icons/cg";
 import './dashboard.css';
 import { useNavigate } from 'react-router-dom';
 import { MdLogout } from "react-icons/md";
+import picture from "../assets/pic1.jpg";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -393,6 +394,7 @@ function Dashboard() {
 
             {/* Enhanced Achievement Card */}
             <div className="group relative h-96 [perspective:1000px]">
+              
               <div className="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 
                 <div className="absolute inset-0 h-full w-full rounded-3xl bg-gradient-to-br from-amber-50 via-white to-amber-100 border border-amber-200/50 [backface-visibility:hidden] flex flex-col items-center justify-center p-8 shadow-xl hover:shadow-2xl transition-all duration-500">
@@ -409,7 +411,7 @@ function Dashboard() {
                   <div className="mt-4 text-sm text-gray-500 text-center">Hover to see awards</div>
                 </div>
 
-                <div className="absolute inset-0 h-full w-full rounded-3xl bg-gradient-to-br from-amber-600 to-orange-700 [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col justify-center p-6 text-white shadow-2xl">
+                <div className="absolute inset-0 h-full w-full rounded-3xl bg-gradient-to-br from-black to-black-700 [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col justify-center p-6 text-white shadow-2xl">
                   <div className="space-y-6 text-center">
                     {[
                       { icon: "🏆", title: "Best E-commerce 2024", desc: "Industry Leader Award" },

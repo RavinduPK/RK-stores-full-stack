@@ -8,84 +8,96 @@ const categories = [
     image: "https://www.precisionorthomd.com/wp-content/uploads/2023/10/percision-blog-header-junk-food-102323.jpg", 
     link: "/foods",
     description: "Fresh & delicious",
-    color: "from-orange-500 to-red-500"
+    color: "from-orange-500 to-red-500",
+    path : "/foods"
   },
   { 
     name: "Drinks", 
     image: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-802667754.jpg?c=original", 
     link: "/drinks",
     description: "Refreshing beverages",
-    color: "from-blue-500 to-cyan-500"
+    color: "from-blue-500 to-cyan-500",
+    path : "/drinks"
   },
   { 
     name: "Clothes", 
     image: "https://www.shutterstock.com/image-photo/fashionable-clothes-boutique-store-london-600nw-589577570.jpg", 
     link: "/clothes",
     description: "Latest fashion trends",
-    color: "from-pink-500 to-purple-500"
+    color: "from-pink-500 to-purple-500",
+    path : "/clothes"
   },
   { 
     name: "Electronics", 
     image: "https://media.istockphoto.com/id/1174598609/photo/set-of-contemporary-house-appliances-isolated-on-white.jpg?s=612x612&w=0&k=20&c=bBMILbCpLkhIxbL7sAAXaFOaFaSXFCt80ccHgl7iiWM=", 
     link: "/electronics",
     description: "Smart technology",
-    color: "from-indigo-200 to-blue-500"
+    color: "from-indigo-200 to-blue-500",
+    path : "/electronics"
   },
   { 
     name: "Books", 
     image: "https://images.unsplash.com/photo-1512820790803-83ca734da794", 
     link: "/books",
     description: "Knowledge & stories",
-    color: "from-green-500 to-emerald-600"
+    color: "from-green-500 to-emerald-600",
+    path : "/books"
   },
   { 
     name: "Mobiles", 
     image: "https://www.dennemeyer.com/fileadmin/a/blog/Everyday_IP_Spreading_the_word_about_mobile_phones/Everyday-IP_Spreading-the-word-about-mobile-phones_12.jpg", 
     link: "/mobiles",
     description: "Latest smartphones",
-    color: "from-purple-300 to-purple-500"
+    color: "from-purple-300 to-purple-500",
+    path : "/mobiles"
   },
   { 
     name: "Kitchen Items", 
     image: "https://t3.ftcdn.net/jpg/00/63/25/12/360_F_63251258_XMxdxQWrRiv3eY4VatQY5iDwV7lrOiPm.jpg", 
     link: "/kitchen-items",
     description: "Cooking essentials",
-    color: "from-yellow-500 to-orange-500"
+    color: "from-yellow-500 to-orange-500",
+    path : "/kitchen-items"
   },
   { 
     name: "Toys", 
     image: "https://www.yorwaste.co.uk/wp-content/uploads/2024/08/shutterstock_436617280-scaled-optimised.jpg", 
     link: "/toys",
     description: "Fun for all ages",
-    color: "from-purple-500 to-pink-500"
+    color: "from-purple-500 to-pink-500",
+    path : "/toys"
   },
   { 
     name: "Furniture", 
     image: "https://i.pinimg.com/564x/5f/c7/6d/5fc76df6bda7762fe219ed48a724e69d.jpg", 
     link: "/furniture",
     description: "Comfort & style",
-    color: "from-amber-600 to-orange-600"
+    color: "from-amber-600 to-orange-600",
+    path : "/furniture"
   },
   { 
     name: "Tool Kit", 
     image: "https://hi-spec.com/cdn/shop/articles/aeqkmval_800x800.png?v=1719995369", 
     link: "/tool-kit",
     description: "DIY essentials",
-     color: "from-purple-200 to-purple-400"
+     color: "from-purple-200 to-purple-400",
+      path : "/tool-kit"
   },
   { 
     name: "Gift Items", 
     image: "https://images.squarespace-cdn.com/content/v1/6100ae408f395b33971e81aa/1732746095209-H6CXXFLL7W7AZKZDUAWI/Cordner+Advisory+Img+3+%27When+a+Gift+is+Not+a+Gift%27.jpg", 
     link: "/gift-item",
     description: "Perfect presents",
-    color: "from-rose-500 to-pink-600"
+    color: "from-rose-500 to-pink-600",
+    path : "/gift-item"
   },
   { 
     name: "Flowers", 
     image: "https://www.madlen.pl/wp-content/uploads/IMG_2618-scaled.jpeg", 
     link: "/flowers",
     description: "Fresh blooms",
-    color: "from-emerald-500 to-green-600"
+    color: "from-emerald-500 to-green-600",
+    path : "/flowers"
   }
 ];
 
@@ -247,7 +259,7 @@ function StorePage() {
                     {/* Browse Now Button */}
                     <div className="mt-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                       <button
-                        onClick={() => navigate(category.link)} //  Navigates to category page
+                        onClick={() => navigate(category.path)} //  Navigates to category page
                         className={`px-4 py-2 bg-gradient-to-r ${category.color} text-white rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105`}
                       >
                         Browse Now →

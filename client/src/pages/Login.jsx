@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import backgroundImage from "../assets/cart2.jpg";
+
+
 import {
   Eye,
   EyeOff,
@@ -24,6 +27,18 @@ function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleLogin = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await axios.post("http://localhost:3001/login", { email, password });
+    localStorage.setItem("token", res.data.token); // ✅ store token
+    navigate("/dashboard"); // redirect to dashboard after login
+  } catch (err) {
+    alert(err.response?.data?.error || "Login failed");
+  }
+};
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -45,63 +60,25 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center relative bg-white overflow-hidden">
+   <div
+  className="min-h-screen w-full flex items-center justify-center relative bg-no-repeat bg-center"
+  style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: '100%' }}
+>
       <Toaster position="top-right" reverseOrder={false} />
 
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-400/20 to-indigo-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-r from-cyan-300/20 to-blue-300/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-indigo-300/10 to-blue-300/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-      </div>
-
       {/* Card Container */}
-      <div className="relative w-full max-w-6xl flex flex-col md:flex-row bg-blue-200 backdrop-blur-xl border border-blue-100 rounded-3xl shadow-2xl overflow-hidden z-10">
-        {/* Left Side - Welcome */}
-        <div className="hidden md:flex flex-col justify-center items-center p-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-cyan-50 border-r border-blue-100 w-1/3">
-          <div className="text-center max-w-md">
-            <div className="mb-8 relative inline-block">
-              <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/25">
-                <span className="text-3xl font-bold text-white">RK</span>
-              </div>
-            </div>
-            <h2 className="text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent block">
-                Welcome Back
-              </span>
-              <span className="bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text text-transparent block mt-2">
-                RK Stores
-              </span>
-            </h2>
-            <p className="text-slate-600 text-lg leading-relaxed">
-              Sign in to access your account, track orders, and continue your amazing shopping journey with us.
-            </p>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-6 mt-6">
-              <div className="text-center p-4 bg-white/60 rounded-2xl backdrop-blur-sm border border-white/80">
-                <Shield className="w-8 h-8 text-blue-500 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-slate-700">100%</div>
-                <div className="text-slate-500 text-sm">Secure</div>
-              </div>
-              <div className="text-center p-4 bg-white/60 rounded-2xl backdrop-blur-sm border border-white/80">
-                <Zap className="w-8 h-8 text-indigo-500 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-slate-700">Fast</div>
-                <div className="text-slate-500 text-sm">Access</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="relative w-2xl  flex flex-col md:flex-row backdrop-blur-sm border rounded-3xl shadow-2xl overflow-hidden z-10">
+      
 
         {/* Right Side - Login Form */}
-        <div className="w-full md:w-2/3 p-10 flex flex-col justify-center">
+        <div className="w-full md:w-6/3 p-10 flex flex-col justify-center">
           <div className="max-w-md mx-auto w-full">
             <div className="text-center mb-8">
             
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent mb-2">
+              <h1 className="text-3xl font-bold bg-white bg-clip-text text-transparent mb-2">
                 Sign In
               </h1>
-              <p className="text-slate-500">Welcome back! Please sign in to your account</p>
+              <p className="text-white">Welcome back! Please sign in to your account</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -198,7 +175,7 @@ function Login() {
 
             {/* Footer */}
             <div className="mt-6 text-center">
-              <span className="text-slate-500">Don't have an account? </span>
+              <span className="text-white">Don't have an account? </span>
               <button
                 type="button"
                 onClick={() => navigate("/register")}

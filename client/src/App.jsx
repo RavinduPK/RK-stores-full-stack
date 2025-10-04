@@ -23,6 +23,7 @@ import KitchenPage from './pages/kitchenPage.jsx';
 import CartPage from './pages/cartPage.jsx';
 import PurchasePage from './pages/purchasePage.jsx';
 
+
 const annonymy = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN0c2Jwa2JoZnZ6ZGNta21raWF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyMjAwMTksImV4cCI6MjA3MTc5NjAxOX0.YeRpo0f0aLq1TtzMHcaPfSKKNf7rnhohxag9qPI8hEc";
 const supabase = "https://stsbpkbhfvzdcmkmkiav.supabase.co";
 
@@ -56,6 +57,7 @@ function App() {
         <Route path="/kitchen-items" element={<KitchenPage />} /> {/* Adding KitchenPage route */}
         <Route path="/cart" element={<CartPage />} /> {/* Adding CartPage route */}
         <Route path="/purchase" element={<PurchasePage />} /> {/* Adding PurchasePage route */}
+      
 
       </Routes>
     </BrowserRouter>
