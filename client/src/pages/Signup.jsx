@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import backgroundImage from "../assets/cart.jpg";
-
-
+import backgroundImage from "../assets/shopping.jpg";
+import sidepic from "../assets/cart.jpg";
 
 import {
   Eye,
@@ -10,10 +9,6 @@ import {
   Mail,
   Lock,
   ArrowRight,
-  Sparkles,
-  Check,
-  Shield,
-  Star,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -40,33 +35,43 @@ function Signup() {
   };
 
   return (
-  <div
-  className="min-h-screen w-full flex items-center justify-center relative bg-no-repeat bg-center"
-  style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: '100%' }}
->
+    <div
+      className="min-h-screen w-full flex items-center justify-center relative bg-no-repeat bg-center bg-cover"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-30"></div>
 
       {/* Main Card */}
-     <div className="relative w-1xl  flex flex-col md:flex-row backdrop-blur-sm border rounded-3xl shadow-2xl overflow-hidden z-10">
-        {/* Left Side - Signup Form */}
-        <div className="w-full xl:w-2/2 p-5 lg:p-12 flex flex-col justify-center">
+      <div className="relative w-90 sm:w-[90%] md:w-2/3 lg:w-1/2 flex flex-col md:flex-row backdrop-blur-sm border rounded-3xl shadow-2xl overflow-hidden z-10">
+
+        {/* Left Side - Signup Image */}
+        <div className="hidden md:block w-1/2">
+          <img
+            src={sidepic}
+            alt="Signup"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Right Side - Signup Form */}
+        <div className="w-full md:w-1/2 p-5 sm:p-8 md:p-12 flex flex-col justify-center">
           <div className="max-w-md mx-auto w-full">
             {/* Header */}
-            <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold bg-white bg-clip-text text-transparent mb-2">
+            <div className="text-center mb-6 sm:mb-8">
+              <h1 className="text-2xl sm:text-4xl font-bold bg-white bg-clip-text text-transparent mb-2">
                 Create Account
               </h1>
-              <p className="text-white text-lg">
+              <p className="text-white text-sm sm:text-lg">
                 Join RK Stores and start your journey
               </p>
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Name Field */}
               <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
+                <div className="absolute inset-y-0 left-0 pl-3 sm:pl-4 flex items-center pointer-events-none z-10">
                   <User
                     className={`h-5 w-5 transition-all duration-300 ${
                       focusedField === "name"
@@ -85,7 +90,7 @@ function Signup() {
                   required
                   disabled={loading}
                   placeholder="Full Name"
-                  className={`w-full pl-12 pr-4 py-3 bg-slate-50/80 border-2 rounded-2xl text-slate-700 placeholder-slate-400 transition-all duration-300 hover:bg-white/80 focus:outline-none focus:bg-white/90 ${
+                  className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 bg-slate-50/80 border-2 rounded-2xl text-slate-700 placeholder-slate-400 transition-all duration-300 hover:bg-white/80 focus:outline-none focus:bg-white/90 ${
                     focusedField === "name"
                       ? "border-blue-400 shadow-lg shadow-blue-500/20"
                       : "border-slate-200 hover:border-slate-300"
@@ -95,7 +100,7 @@ function Signup() {
 
               {/* Email Field */}
               <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
+                <div className="absolute inset-y-0 left-0 pl-3 sm:pl-4 flex items-center pointer-events-none z-10">
                   <Mail
                     className={`h-5 w-5 transition-all duration-300 ${
                       focusedField === "email"
@@ -114,7 +119,7 @@ function Signup() {
                   required
                   disabled={loading}
                   placeholder="Email Address"
-                  className={`w-full pl-12 pr-4 py-3 bg-slate-50/80 border-2 rounded-2xl text-slate-700 placeholder-slate-400 transition-all duration-300 hover:bg-white/80 focus:outline-none focus:bg-white/90 ${
+                  className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 bg-slate-50/80 border-2 rounded-2xl text-slate-700 placeholder-slate-400 transition-all duration-300 hover:bg-white/80 focus:outline-none focus:bg-white/90 ${
                     focusedField === "email"
                       ? "border-blue-400 shadow-lg shadow-blue-500/20"
                       : "border-slate-200 hover:border-slate-300"
@@ -124,7 +129,7 @@ function Signup() {
 
               {/* Password Field */}
               <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
+                <div className="absolute inset-y-0 left-0 pl-3 sm:pl-4 flex items-center pointer-events-none z-10">
                   <Lock
                     className={`h-5 w-5 transition-all duration-300 ${
                       focusedField === "password"
@@ -143,7 +148,7 @@ function Signup() {
                   required
                   disabled={loading}
                   placeholder="Password"
-                  className={`w-full pl-12 pr-12 py-3 bg-slate-50/80 border-2 rounded-2xl text-slate-700 placeholder-slate-400 transition-all duration-300 hover:bg-white/80 focus:outline-none focus:bg-white/90 ${
+                  className={`w-full pl-10 sm:pl-12 pr-10 py-3 sm:py-4 bg-slate-50/80 border-2 rounded-2xl text-slate-700 placeholder-slate-400 transition-all duration-300 hover:bg-white/80 focus:outline-none focus:bg-white/90 ${
                     focusedField === "password"
                       ? "border-blue-400 shadow-lg shadow-blue-500/20"
                       : "border-slate-200 hover:border-slate-300"
@@ -152,13 +157,9 @@ function Signup() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-blue-500 transition-colors z-10"
+                  className="absolute inset-y-0 right-0 pr-3 sm:pr-4 flex items-center text-slate-400 hover:text-blue-500 transition-colors z-10"
                 >
-                  {showPassword ? (
-                    <EyeOff className="h-5 w-5" />
-                  ) : (
-                    <Eye className="h-5 w-5" />
-                  )}
+                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                 </button>
               </div>
 
@@ -166,7 +167,7 @@ function Signup() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full relative group bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none active:scale-[0.98]"
+                className="w-full relative group bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-semibold py-3 sm:py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none active:scale-[0.98]"
               >
                 <span className="flex items-center justify-center">
                   {loading ? (
@@ -185,8 +186,8 @@ function Signup() {
             </form>
 
             {/* Footer */}
-            <div className="mt-6 text-center">
-              <span className="text-white">Already have an account? </span>
+            <div className="mt-4 sm:mt-6 text-center">
+              <span className="text-white text-sm sm:text-base">Already have an account? </span>
               <button
                 type="button"
                 disabled={loading}

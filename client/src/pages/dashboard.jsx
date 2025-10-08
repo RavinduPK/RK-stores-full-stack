@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { CgProfile } from "react-icons/cg";
 import './dashboard.css';
 import { useNavigate } from 'react-router-dom';
-import { MdLogout } from "react-icons/md";
-import picture from "../assets/pic1.jpg";
+import { MdLogout } from "react-icons/md";    
+
+import picture from "../assets/pic3.jpg";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -285,20 +286,23 @@ function Dashboard() {
             {/* Enhanced Progress Card */}
             <div className="group relative h-96 [perspective:1000px]">
               <div className="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                
+
                 {/* Enhanced Front Side */}
-                <div className="absolute inset-0 h-full w-full rounded-3xl bg-gradient-to-br from-blue-50 via-white to-blue-100 border border-blue-200/50 [backface-visibility:hidden] flex flex-col items-center justify-center p-8 shadow-xl hover:shadow-2xl transition-all duration-500">
+                <div
+                  className="absolute inset-0 h-full w-full rounded-3xl bg-blue-100 border border-yellow-200/50 [backface-visibility:hidden] flex flex-col items-center justify-center p-8 shadow-xl hover:shadow-2xl transition-all duration-500"
+                  style={{
+                  backgroundImage: "url('https://images.pexels.com/photos/974911/pexels-photo-974911.jpeg?cs=srgb&dl=pexels-olly-974911.jpg&fm=jpg w-800 h=800&auto=compress&cs=tinysrgb')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center"
+                  }}
+                >
                   <div className="relative mb-8">
-                    <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl flex items-center justify-center shadow-2xl">
-                      <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                      </svg>
-                    </div>
-                    <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl opacity-20 blur-xl"></div>
+                 
+                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl opacity-20 blur-xl"></div>
                   </div>
-                  <h3 className="text-2xl font-black text-gray-900 mb-3 text-center">Our Progress</h3>
-                  <p className="text-blue-600 font-semibold text-center">Growing Every Day</p>
-                  <div className="mt-4 text-sm text-gray-500 text-center">Hover to see details</div>
+                  <h3 className="text-2xl font-black text-white text-center mt-28 backdrop-blur-sm rounded-3xl px-4 py-3 shadow-lg">Our Progress</h3>
+                  <p className="text-green-800 font-semibold text-center mt-6 rounded-xl px-4 py-2 animate-blink">Growing Every Day</p>
+                  <div className="mt-4 text-sm text-white text-center">Hover to see details</div>
                 </div>
 
                 {/* Enhanced Back Side */}
@@ -326,19 +330,21 @@ function Dashboard() {
             <div className="group relative h-96 [perspective:1000px]">
               <div className="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 
-                <div className="absolute inset-0 h-full w-full rounded-3xl bg-gradient-to-br from-indigo-50 via-white to-indigo-100 border border-indigo-200/50 [backface-visibility:hidden] flex flex-col items-center justify-center p-8 shadow-xl hover:shadow-2xl transition-all duration-500">
+                  <div
+                  className="absolute inset-0 h-full w-full rounded-3xl bg-blue-100 border border-yellow-200/50 [backface-visibility:hidden] flex flex-col items-center justify-center p-8 shadow-xl hover:shadow-2xl transition-all duration-500"
+                  style={{
+                  backgroundImage: "url('https://thumbs.dreamstime.com/b/brightly-colored-shopping-cart-filled-groceries-supermarket-aisle-daytime-brimming-various-grocery-items-seen-349125882.jpg')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center"
+                  }}
+                >
                   <div className="relative mb-8">
-                    <div className="w-24 h-24 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl flex items-center justify-center shadow-2xl">
-                      <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                      </svg>
-                    </div>
+                    
                     <div className="absolute -inset-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl opacity-20 blur-xl"></div>
                   </div>
-                  <h3 className="text-2xl font-black text-gray-900 mb-3 text-center">Our Vision</h3>
-                  <p className="text-indigo-600 font-semibold text-center">Future Forward</p>
-                  <div className="mt-4 text-sm text-gray-500 text-center">Hover to see details</div>
+                  <h3 className="text-3xl font-black text-white text-center mt-28 backdrop-blur-sm rounded-3xl px-4 py-3 shadow-lg">Our Vision</h3>
+                 <p className="text-yellow-300 font-semibold text-center mt-6 rounded-xl px-4 py-2 animate-blink">Growing Every Day</p>
+                  <div className="mt-4 text-sm text-white text-center">Hover to see details</div>
                 </div>
 
                 <div className="absolute inset-0 h-full w-full rounded-3xl bg-gradient-to-br from-indigo-600 to-purple-700 [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col justify-center p-6 text-white shadow-2xl">
@@ -357,18 +363,21 @@ function Dashboard() {
             <div className="group relative h-96 [perspective:1000px]">
               <div className="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 
-                <div className="absolute inset-0 h-full w-full rounded-3xl bg-gradient-to-br from-purple-50 via-white to-purple-100 border border-purple-200/50 [backface-visibility:hidden] flex flex-col items-center justify-center p-8 shadow-xl hover:shadow-2xl transition-all duration-500">
+                <div
+                  className="absolute inset-0 h-full w-full rounded-3xl bg-blue-100 border border-yellow-200/50 [backface-visibility:hidden] flex flex-col items-center justify-center p-8 shadow-xl hover:shadow-2xl transition-all duration-500"
+                  style={{
+                  backgroundImage: "url('https://conjointly.com/img/predict-customer-acceptance.jpg')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center"
+                  }}
+                >
                   <div className="relative mb-8">
-                    <div className="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-600 rounded-3xl flex items-center justify-center shadow-2xl">
-                      <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
+                   
                     <div className="absolute -inset-2 bg-gradient-to-r from-purple-500 to-pink-600 rounded-3xl opacity-20 blur-xl"></div>
                   </div>
-                  <h3 className="text-2xl font-black text-gray-900 mb-3 text-center">Our History</h3>
-                  <p className="text-purple-600 font-semibold text-center">Journey of Excellence</p>
-                  <div className="mt-4 text-sm text-gray-500 text-center">Hover to see timeline</div>
+                 <h3 className="text-3xl font-black text-white text-center mt-28 backdrop-blur-sm rounded-3xl px-4 py-3 shadow-lg"> Our History</h3>
+                 <p className="text-green-800 font-semibold text-center mt-6 rounded-xl px-4 py-2 animate-blink">Growing Every Day</p>
+                  <div className="mt-4 text-sm text-white text-center">Hover to see timeline</div>
                 </div>
 
                 <div className="absolute inset-0 h-full w-full rounded-3xl bg-gradient-to-br from-purple-600 to-pink-700 [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col justify-center p-6 text-white shadow-2xl">
@@ -397,18 +406,21 @@ function Dashboard() {
               
               <div className="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 
-                <div className="absolute inset-0 h-full w-full rounded-3xl bg-gradient-to-br from-amber-50 via-white to-amber-100 border border-amber-200/50 [backface-visibility:hidden] flex flex-col items-center justify-center p-8 shadow-xl hover:shadow-2xl transition-all duration-500">
+                 <div
+                  className="absolute inset-0 h-full w-full rounded-3xl bg-blue-100 border border-yellow-200/50 [backface-visibility:hidden] flex flex-col items-center justify-center p-8 shadow-xl hover:shadow-2xl transition-all duration-500"
+                  style={{
+                  backgroundImage: "url('https://img.freepik.com/free-photo/arrangement-black-friday-shopping-carts-with-copy-space_23-2148667047.jpg')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center"
+                  }}
+                >
                   <div className="relative mb-8">
-                    <div className="w-24 h-24 bg-gradient-to-r from-amber-500 to-orange-600 rounded-3xl flex items-center justify-center shadow-2xl">
-                      <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                      </svg>
-                    </div>
+                   
                     <div className="absolute -inset-2 bg-gradient-to-r from-amber-500 to-orange-600 rounded-3xl opacity-20 blur-xl"></div>
                   </div>
-                  <h3 className="text-2xl font-black text-gray-900 mb-3 text-center">Achievements</h3>
-                  <p className="text-amber-600 font-semibold text-center">Awards & Recognition</p>
-                  <div className="mt-4 text-sm text-gray-500 text-center">Hover to see awards</div>
+                  <h3 className="text-3xl font-black text-white text-center mt-28 backdrop-blur-sm rounded-3xl px-4 py-3 shadow-lg">Achievements</h3>
+                  <p className="text-amber-600 font-semibold text-center mt-6 rounded-xl px-4 py-2 animate-blink">Awards & Recognition</p>
+                  <div className="mt-4 text-sm text-white-500 text-center">Hover to see awards</div>
                 </div>
 
                 <div className="absolute inset-0 h-full w-full rounded-3xl bg-gradient-to-br from-black to-black-700 [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col justify-center p-6 text-white shadow-2xl">

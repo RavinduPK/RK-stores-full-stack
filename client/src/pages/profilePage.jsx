@@ -71,7 +71,7 @@ function ProfilePage() {
       {/* Back Button */}
       <div className="absolute top-6 left-6 z-10">
         <button
-          onClick={() => navigate("/products1")}
+          onClick={() => navigate("/dashboard")}
           className="p-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg hover:shadow-xl hover:scale-110 transition transform duration-300"
         >
           <IoHomeOutline className="text-xl" />
