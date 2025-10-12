@@ -1,8 +1,5 @@
-import React from "react"
-import { FaBackward } from "react-icons/fa";
-import { useNavigate } from "react-router-dom"
-
-// import Navbar from "../components/Navbar" // uncomment if you have a Navbar
+import React, { useState } from "react"
+import { ArrowLeft, Search, ShoppingCart, Heart, Star, Zap, Cpu, TrendingUp } from "lucide-react"
 
 const filters = ["All", "Kitchen Appliances", "Home Electronics", "Office Electronics", "Smart Devices", "Wearables"]
 
@@ -11,85 +8,154 @@ const electronics = [
     name: "Smartphone",
     subtitle: "Latest Model",
     price: "$699",
+    rating: 4.8,
+    reviews: 2341,
     img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop",
+    badge: "Bestseller"
   },
   {
     name: "Laptop",
     subtitle: "High Performance",
     price: "$1299",
+    rating: 4.9,
+    reviews: 1876,
     img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop",
+    badge: "Premium"
   },
   {
     name: "Smartwatch",
     subtitle: "Fitness & Notifications",
     price: "$249",
-    img: "https://images.unsplash.com/photo-1539887539340-5ed10598e1cf?q=80&w=1200&auto=format&fit=crop",
+    rating: 4.7,
+    reviews: 1543,
+    img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop",
   },
   {
     name: "Wireless Headphones",
     subtitle: "Noise Cancelling",
     price: "$199",
-    img: "https://images.unsplash.com/photo-1580894894511-1d1c6f6c3d8d?q=80&w=1200&auto=format&fit=crop",
+    rating: 4.8,
+    reviews: 2098,
+    img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop",
+    badge: "Popular"
   },
   {
     name: "Coffee Maker",
     subtitle: "Smart Kitchen Appliance",
     price: "$89",
-    img: "https://images.unsplash.com/photo-1582200993672-cc0adfda1eb4?q=80&w=1200&auto=format&fit=crop",
+    rating: 4.6,
+    reviews: 876,
+    img: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=1200&auto=format&fit=crop",
   },
   {
     name: "LED Desk Lamp",
     subtitle: "Smart Lighting",
     price: "$49",
-    img: "https://images.unsplash.com/photo-1585079547246-77b4d4f3793e?q=80&w=1200&auto=format&fit=crop",
+    rating: 4.5,
+    reviews: 654,
+    img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=1200&auto=format&fit=crop",
   },
 ]
 
 function ElectricPage() {
-  const navigate = useNavigate();
+  const [selectedFilter, setSelectedFilter] = useState("All")
+  const [favorites, setFavorites] = useState(new Set())
+  const [searchQuery, setSearchQuery] = useState("")
+
+  const toggleFavorite = (index) => {
+    const newFavorites = new Set(favorites)
+    if (newFavorites.has(index)) {
+      newFavorites.delete(index)
+    } else {
+      newFavorites.add(index)
+    }
+    setFavorites(newFavorites)
+  }
+
   return (
-   <div className="min-h-screen bg-gradient-to-br from-rose-50 via-purple-50 to-indigo-50 relative">
-      {/* Back Button */}
-      <div className="absolute top-6 left-6 z-10">
-        <button
-          onClick={() => navigate("/products1")}
-          className="p-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg hover:shadow-xl hover:scale-110 transition transform duration-300"
-        >
-          <FaBackward className="text-xl" />
-        </button>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-80 h-80 bg-blue-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+        <div className="absolute top-40 right-10 w-80 h-80 bg-indigo-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-700"></div>
+        <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-purple-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-1000"></div>
       </div>
-      {/* Hero Section */}
-      <section className="relative overflow-hidden text-center py-16 px-6">
-        <div className="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-gradient-to-tr from-purple-500/20 to-pink-500/20 blur-3xl"></div>
-        <div className="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-gradient-to-tr from-indigo-500/20 to-fuchsia-500/20 blur-3xl"></div>
 
-        <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-700 via-pink-600 to-indigo-700 drop-shadow-sm">
-          Electronics Store
-        </h1>
-        <p className="mt-4 text-lg md:text-xl text-slate-600">
-          Explore the latest gadgets and smart devices ⚡
-        </p>
-
-        {/* Search Bar */}
-        <div className="mt-8 flex items-center justify-center">
-          <div className="w-full max-w-2xl rounded-2xl bg-white/80 backdrop-blur border border-white/60 shadow-lg p-2 flex gap-2">
-            <input
-              type="text"
-              placeholder="Search electronics..."
-              className="flex-1 rounded-xl px-4 py-3 outline-none bg-transparent placeholder-slate-400"
-            />
-            <button className="px-5 py-3 rounded-xl font-semibold bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow hover:shadow-md hover:from-purple-700 hover:to-pink-700 transition">
-              Search
+      {/* Header Navigation */}
+      <nav className="relative z-20 backdrop-blur-xl bg-white/40 border-b border-white/60 shadow-lg sticky top-0">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <button
+            onClick={() => window.history.back()}
+            className="group flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+          >
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            <span className="font-medium">Back</span>
+          </button>
+          
+          <div className="flex items-center gap-4">
+            <button className="relative p-3 rounded-full bg-white/60 backdrop-blur-sm border border-white/80 hover:bg-white/80 transition-all hover:scale-110 shadow-md">
+              <Heart className="w-5 h-5 text-rose-600" />
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-rose-500 text-white text-xs rounded-full flex items-center justify-center font-bold">
+                {favorites.size}
+              </span>
+            </button>
+            <button className="relative p-3 rounded-full bg-white/60 backdrop-blur-sm border border-white/80 hover:bg-white/80 transition-all hover:scale-110 shadow-md">
+              <ShoppingCart className="w-5 h-5 text-blue-600" />
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-blue-500 text-white text-xs rounded-full flex items-center justify-center font-bold">
+                3
+              </span>
             </button>
           </div>
         </div>
+      </nav>
 
-        {/* Filter Buttons */}
-        <div className="mt-6 flex flex-wrap gap-3 justify-center">
+      {/* Hero Section */}
+      <section className="relative z-10 text-center pt-16 pb-12 px-6">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-indigo-100 border border-blue-200 mb-6 animate-bounce">
+          <Zap className="w-4 h-4 text-blue-600" />
+          <span className="text-sm font-semibold text-blue-700">Tech Week: Save up to 30% on top electronics!</span>
+        </div>
+
+        <h1 className="text-6xl md:text-7xl font-black tracking-tight mb-4">
+          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 animate-gradient">
+            Electronics Store
+          </span>
+        </h1>
+        <p className="text-xl md:text-2xl text-slate-600 font-light max-w-2xl mx-auto">
+          Cutting-edge technology at your fingertips ⚡
+        </p>
+
+        {/* Modern Search Bar */}
+        <div className="mt-10 max-w-3xl mx-auto">
+          <div className="group relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+            <div className="relative flex items-center gap-3 bg-white/80 backdrop-blur-xl rounded-3xl p-3 shadow-2xl border border-white/60">
+              <Search className="w-6 h-6 text-slate-400 ml-3" />
+              <input
+                type="text"
+                placeholder="Search for laptops, smartphones, smartwatches..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="flex-1 bg-transparent outline-none text-lg placeholder-slate-400 text-slate-800"
+              />
+              <button className="px-8 py-3 rounded-2xl font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Filter Pills */}
+        <div className="mt-8 flex flex-wrap gap-3 justify-center">
           {filters.map((f) => (
             <button
               key={f}
-              className="px-4 py-2 rounded-full text-sm font-medium border border-purple-200 bg-white/70 hover:bg-purple-50 hover:border-purple-300 transition"
+              onClick={() => setSelectedFilter(f)}
+              className={`px-6 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 ${
+                selectedFilter === f
+                  ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg scale-105"
+                  : "bg-white/70 backdrop-blur-sm text-slate-700 border border-slate-200 hover:bg-white hover:shadow-md hover:scale-105"
+              }`}
             >
               {f}
             </button>
@@ -98,55 +164,116 @@ function ElectricPage() {
       </section>
 
       {/* Electronics Grid */}
-      <section className="mx-auto max-w-7xl px-6 py-12">
+      <section className="relative z-10 max-w-7xl mx-auto px-6 py-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {electronics.map((item, i) => (
             <div
               key={i}
-              className="group relative overflow-hidden rounded-3xl bg-white border border-slate-100 shadow hover:shadow-xl transition"
+              className="group relative bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/60 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             >
-              <div className="overflow-hidden">
+              {/* Badge */}
+              {item.badge && (
+                <div className={`absolute top-4 left-4 z-10 px-4 py-1.5 rounded-full text-white text-xs font-bold shadow-lg ${
+                  item.badge === "Premium" 
+                    ? "bg-gradient-to-r from-purple-600 to-pink-600" 
+                    : item.badge === "Popular"
+                    ? "bg-gradient-to-r from-emerald-600 to-teal-600"
+                    : "bg-gradient-to-r from-blue-600 to-indigo-600"
+                }`}>
+                  {item.badge === "Bestseller" && <TrendingUp className="w-3 h-3 inline mr-1" />}
+                  {item.badge === "Premium" && <Cpu className="w-3 h-3 inline mr-1" />}
+                  {item.badge}
+                </div>
+              )}
+
+              {/* Favorite Button */}
+              <button
+                onClick={() => toggleFavorite(i)}
+                className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-white/90 backdrop-blur-sm shadow-lg hover:scale-110 transition-all duration-300"
+              >
+                <Heart
+                  className={`w-5 h-5 ${
+                    favorites.has(i) ? "fill-rose-500 text-rose-500" : "text-slate-400"
+                  } transition-colors`}
+                />
+              </button>
+
+              {/* Image */}
+              <div className="relative overflow-hidden h-80">
                 <img
                   src={item.img}
                   alt={item.name}
-                  className="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:rotate-[0.5deg]"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
-              <div className="p-5">
-                <h3 className="text-xl font-bold text-slate-800 group-hover:text-purple-700 transition">
+              {/* Content */}
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-1">
+                    <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <span className="text-sm font-semibold text-slate-700">{item.rating}</span>
+                  </div>
+                  <span className="text-sm text-slate-400">({item.reviews} reviews)</span>
+                </div>
+
+                <h3 className="text-2xl font-bold text-slate-800 mb-1 group-hover:text-blue-600 transition-colors">
                   {item.name}
                 </h3>
-                <p className="mt-1 text-slate-500">{item.subtitle}</p>
+                <p className="text-slate-500 mb-4">{item.subtitle}</p>
 
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="text-lg font-semibold text-purple-700">{item.price}</span>
-                  <button className="rounded-xl px-4 py-2 font-medium bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white shadow hover:shadow-md hover:from-indigo-700 hover:to-fuchsia-700 transition">
-                    Add to cart
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                    {item.price}
+                  </span>
+                  <button className="px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2">
+                    <ShoppingCart className="w-4 h-4" />
+                    Add
                   </button>
                 </div>
               </div>
 
-              {/* Glow on Hover */}
-              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500">
-                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-indigo-500/20 blur-2xl"></div>
+              {/* Animated Glow */}
+              <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 via-indigo-600/20 to-purple-600/20 rounded-3xl blur-xl"></div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Load More Button */}
-        <div className="mt-12 text-center">
-          <button className="rounded-2xl px-6 py-3 font-semibold bg-white border border-slate-200 shadow hover:shadow-lg">
-            Load more
+        {/* Load More */}
+        <div className="mt-16 text-center">
+          <button className="group px-10 py-4 rounded-2xl font-semibold bg-white/80 backdrop-blur-sm border-2 border-slate-200 hover:border-blue-300 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+            <span className="text-slate-700 group-hover:text-blue-600 transition-colors">
+              Explore more cutting-edge tech
+            </span>
           </button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="px-6 pb-10 text-center text-sm text-slate-500">
-        © 2025 RK Stores — Power up your life!
+      <footer className="relative z-10 mt-20 py-12 border-t border-white/60 backdrop-blur-sm bg-white/40">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-slate-600 font-medium">
+            © 2025 RK Stores — Power up your life! ⚡
+          </p>
+          <p className="text-sm text-slate-500 mt-2">
+            Your destination for the latest electronics and smart devices
+          </p>
+        </div>
       </footer>
+
+      <style>{`
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+      `}</style>
     </div>
   )
 }
