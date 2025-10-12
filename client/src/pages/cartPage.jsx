@@ -4,50 +4,24 @@ import { useNavigate } from "react-router-dom";
 
 function CartPage() {
   const navigate = useNavigate();
-  const [cartItems, setCartItems] = useState([
-    // Sample data for demonstration
-    {
-      id: 1,
-      name: "Denim Jacket",
-      subtitle: "Men's Casual",
-      price: 45.99,
-      originalPrice: 59.99,
-      img: "https://images.unsplash.com/photo-1520975918318-3f1124c4b6c5?q=80&w=1200&auto=format&fit=crop",
-      selectedSize: "L",
-      selectedColor: "#1f2937",
-      material: "Denim",
-      quantity: 1,
-      rating: 4.8,
-    },
-    {
-      id: 2,
-      name: "Summer Dress",
-      subtitle: "Women's Fashion",
-      price: 59.00,
-      originalPrice: 79.99,
-      img: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop",
-      selectedSize: "M",
-      selectedColor: "#f472b6",
-      material: "Cotton",
-      quantity: 2,
-      rating: 4.9,
-    }
-  ]);
+  const [cartItems, setCartItems] = useState([]);
   const [favorites, setFavorites] = useState(new Set([2]));
   const [showCheckout, setShowCheckout] = useState(false);
 
+  // Load cart items from localStorage when page loads
   useEffect(() => {
-    // Load from localStorage in real implementation
-    // const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    // setCartItems(storedCart);
+    const storedCart = JSON.parse(localStorage.getItem("/cart")) || [];
+    setCartItems(storedCart);
   }, []);
 
+  // Remove item from cart
   const handleRemove = (itemId) => {
     const updatedCart = cartItems.filter(item => item.id !== itemId);
     setCartItems(updatedCart);
-    // localStorage.setItem("cart", JSON.stringify(updatedCart));
+    localStorage.setItem("/cart", JSON.stringify(updatedCart));
   };
 
+  // Change quantity of an item
   const handleQuantityChange = (itemId, change) => {
     const updatedCart = cartItems.map(item => {
       if (item.id === itemId) {
@@ -57,8 +31,10 @@ function CartPage() {
       return item;
     });
     setCartItems(updatedCart);
+    localStorage.setItem("/cart", JSON.stringify(updatedCart));
   };
 
+  // Toggle favorite status
   const toggleFavorite = (itemId) => {
     const newFavorites = new Set(favorites);
     if (newFavorites.has(itemId)) {
@@ -73,12 +49,8 @@ function CartPage() {
     console.log("Navigate to purchase:", item);
   };
 
-  const navigateBack = () => {
-    console.log("Navigate back");
-  };
-
   const continueShopping = () => {
-    console.log("Continue shopping");
+    navigate("/products1");
   };
 
   const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -108,7 +80,7 @@ function CartPage() {
               <p className="text-sm text-indigo-600/70">{cartItems.length} items</p>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-3">
             <button className="p-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-600 transition-colors">
               <Heart className="w-5 h-5" />
@@ -157,8 +129,8 @@ function CartPage() {
                           onClick={() => toggleFavorite(item.id)}
                           className="absolute top-2 right-2 p-1.5 bg-white/90 backdrop-blur-sm rounded-full shadow-md hover:bg-white transition-all"
                         >
-                          <Heart 
-                            className={`w-4 h-4 ${favorites.has(item.id) ? 'fill-rose-500 text-rose-500' : 'text-indigo-600'}`} 
+                          <Heart
+                            className={`w-4 h-4 ${favorites.has(item.id) ? 'fill-rose-500 text-rose-500' : 'text-indigo-600'}`}
                           />
                         </button>
                       </div>
@@ -246,13 +218,13 @@ function CartPage() {
             <div className="lg:col-span-1">
               <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-indigo-200/50 p-6 sticky top-24">
                 <h2 className="text-xl font-bold text-indigo-900 mb-6">Order Summary</h2>
-                
+
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between text-indigo-700">
                     <span>Subtotal</span>
                     <span className="font-semibold">${subtotal.toFixed(2)}</span>
                   </div>
-                  
+
                   {savings > 0 && (
                     <div className="flex justify-between text-emerald-600">
                       <span className="flex items-center gap-1">
@@ -262,7 +234,7 @@ function CartPage() {
                       <span className="font-semibold">-${savings.toFixed(2)}</span>
                     </div>
                   )}
-                  
+
                   <div className="flex justify-between text-indigo-700">
                     <span className="flex items-center gap-1">
                       <Truck className="w-4 h-4" />
@@ -272,12 +244,12 @@ function CartPage() {
                       {shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`}
                     </span>
                   </div>
-                  
+
                   <div className="flex justify-between text-indigo-700">
                     <span>Tax</span>
                     <span className="font-semibold">${tax.toFixed(2)}</span>
                   </div>
-                  
+
                   <div className="border-t border-indigo-200 pt-4">
                     <div className="flex justify-between text-lg font-bold text-indigo-900">
                       <span>Total</span>
