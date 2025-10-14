@@ -52,6 +52,23 @@ function ClothesPage() {
 
   useEffect(() => {
     let filtered = clothes;
+    const updateCart = () => {
+      const storedCart = JSON.parse(localStorage.getItem("/cart")) || [];
+      setCartItems(storedCart);
+    };
+
+    // Load when page mounts
+    updateCart();
+
+    // Listen for cart changes from other pages
+    window.addEventListener("storage", updateCart);
+
+    return () => {
+      window.removeEventListener("storage", updateCart);
+    };
+
+  
+
 
     if (selectedFilter !== "All") {
       filtered = filtered.filter((item) => {
