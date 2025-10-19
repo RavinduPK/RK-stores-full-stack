@@ -167,7 +167,7 @@ function AboutPage() {
             We are committed to providing you with the best online shopping experience. Your trust and satisfaction drive us to continuously improve and serve you better every day.
           </p>
           <button
-            onClick={handleBackClick}
+            onClick={() => { window.location.href = '/products1'; }}
             className="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-purple-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 inline-flex items-center gap-2"
           >
             <ShoppingBag className="w-5 h-5" />
@@ -179,7 +179,7 @@ function AboutPage() {
       {/* Footer */}
       <div className="bg-white/80 backdrop-blur-sm border-t border-gray-200 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-gray-600 text-sm">
-          © 2024 RK Stores. All rights reserved.
+          © 2025 RK Stores. All rights reserved.
         </div>
       </div>
     </div>
