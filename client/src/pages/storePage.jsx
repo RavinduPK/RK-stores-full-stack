@@ -306,30 +306,26 @@ function StorePage() {
             <div className="space-y-4">
               <h4 className="text-lg font-semibold">Quick Links</h4>
               <div className="space-y-2">
-                <a
-                  href="#"
-                  className="block text-gray-400 hover:text-white transition-colors"
-                >
-                  About Us
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-400 hover:text-white transition-colors"
-                >
-                  Contact
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-400 hover:text-white transition-colors"
-                >
-                  Privacy Policy
-                </a>
-                <a
-                  href="#"
-                  className="block text-gray-400 hover:text-white transition-colors"
-                >
-                  Terms of Service
-                </a>
+                <button onClick={() => {window.location.href = "/aboutUs1"}} className="block text-gray-400 hover:text-white transition-colors">
+    
+               About Us
+                </button>
+
+
+                <button onClick={() => {}} className="block text-gray-400 hover:text-white transition-colors">
+    
+               Contact Us
+                </button>
+
+
+                 <button onClick={() => {window.location.href = "/privacy"}} className="block text-gray-400 hover:text-white transition-colors">
+    
+               Privacy Policy
+                </button>
+
+
+
+               
               </div>
             </div>
 

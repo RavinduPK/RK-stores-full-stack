@@ -1,48 +1,92 @@
 import React, { useState, useEffect } from "react";
-import { 
-  ArrowLeft, Search, ShoppingCart, Heart, Star, TrendingUp, Sparkles, Shield, Truck, Zap 
+import {
+  ArrowLeft,
+  Search,
+  ShoppingCart,
+  Heart,
+  Star,
+  TrendingUp,
+  Sparkles,
+  Shield,
+  Truck,
+  Zap,
+  PrinterCheck,
 } from "lucide-react";
 
 const categories = ["All", "Men", "Women", "Kids", "Unisex"];
 
 const clothes = [
-  { id: 1, 
-    name: "Denim Jacket", 
+  {
+    id: 1,
+    name: "Denim Jacket",
     subtitle: "Men's Casual",
-     price: "$45.99",
-      originalPrice: "$59.99", 
-      rating: 4.8,
-       reviews: 124, 
-       img: "https://media.cnn.com/api/v1/images/stellar/prod/best-denim-jackets-cnnu-1.jpg?c=16x9&q=w_800,c_fill", 
-       badge: "Popular",
-        inStock: true, },
-        
-        { id: 2, 
-          name: "Casual Hoodie", 
-          subtitle: "Unisex", 
-          price: "$39.50", 
-          rating: 4.6, 
-          reviews: 89,
-           img: "https://i.pinimg.com/736x/a1/17/41/a117418f595e6065354ce926476a9c08.jpg", 
-           badge: "New", 
-           inStock: true, },
-           
-           { id: 3, 
-            name: "Summer Dress", 
-            subtitle: "Women's Fashion",
-             price: "$59.00",
-              originalPrice: "$79.99",
-               rating: 4.9, 
-               reviews: 156,
-                img: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop",
-                 badge: "Bestseller", 
-                 inStock: true, },
-                 
-                 { id: 4, name: "Sports T-shirt", subtitle: "Unisex", price: "$25.00", rating: 4.7, reviews: 203, img: "https://t4.ftcdn.net/jpg/02/81/11/89/360_F_281118992_Pd4j1SeRRytaxx9R3vSzoFltqpzp7p5N.jpg", inStock: true, }, { id: 5, name: "Formal Blazer", subtitle: "Men's Formal", price: "$89.90", originalPrice: "$119.99", rating: 4.8, reviews: 78, img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop", badge: "Premium", inStock: false, }, { id: 6, name: "Kids Outfit", subtitle: "Kids", price: "$29.50", rating: 4.5, reviews: 45, img: "https://as2.ftcdn.net/v2/jpg/05/19/57/97/1000_F_519579712_ku7nKyMEpk2v7S6trwaQmLaGpqxDZkgO.jpg", inStock: true, },
+    price: "$45.99",
+    originalPrice: "$59.99",
+    rating: 4.8,
+    reviews: 124,
+    img: "https://media.cnn.com/api/v1/images/stellar/prod/best-denim-jackets-cnnu-1.jpg?c=16x9&q=w_800,c_fill",
+    badge: "Popular",
+    inStock: true,
+  },
+  {
+    id: 2,
+    name: "Casual Hoodie",
+    subtitle: "Unisex",
+    price: "$39.50",
+    rating: 4.6,
+    reviews: 89,
+    img: "https://i.pinimg.com/736x/a1/17/41/a117418f595e6065354ce926476a9c08.jpg",
+    badge: "New",
+    inStock: true,
+  },
+  {
+    id: 3,
+    name: "Summer Dress",
+    subtitle: "Women's Fashion",
+    price: "$59.00",
+    originalPrice: "$79.99",
+    rating: 4.9,
+    reviews: 156,
+    img: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop",
+    badge: "Bestseller",
+    inStock: true,
+  },
+  {
+    id: 4,
+    name: "Sports T-shirt",
+    subtitle: "Unisex",
+    price: "$25.00",
+    rating: 4.7,
+    reviews: 203,
+    img: "https://t4.ftcdn.net/jpg/02/81/11/89/360_F_281118992_Pd4j1SeRRytaxx9R3vSzoFltqpzp7p5N.jpg",
+    inStock: true,
+  },
+  {
+    id: 5,
+    name: "Formal Blazer",
+    subtitle: "Men's Formal",
+    price: "$89.90",
+    originalPrice: "$119.99",
+    rating: 4.8,
+    reviews: 78,
+    img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop",
+    badge: "Premium",
+    inStock: false,
+  },
+  {
+    id: 6,
+    name: "Kids Outfit",
+    subtitle: "Kids",
+    price: "$29.50",
+    rating: 4.5,
+    reviews: 45,
+    img: "https://as2.ftcdn.net/v2/jpg/05/19/57/97/1000_F_519579712_ku7nKyMEpk2v7S6trwaQmLaGpqxDZkgO.jpg",
+    inStock: true,
+  },
 ];
 
 function ClothesPage() {
-  const [selectedFilter, setSelectedFilter] = useState("All");
+  const [selectedFilter, setSelectedFilter] = useState("selectedFilter");
   const [favorites, setFavorites] = useState(new Set());
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredClothes, setFilteredClothes] = useState(clothes);
@@ -57,18 +101,12 @@ function ClothesPage() {
       setCartItems(storedCart);
     };
 
-    // Load when page mounts
     updateCart();
-
-    // Listen for cart changes from other pages
     window.addEventListener("storage", updateCart);
 
     return () => {
       window.removeEventListener("storage", updateCart);
     };
-
-  
-
 
     if (selectedFilter !== "All") {
       filtered = filtered.filter((item) => {
@@ -218,7 +256,8 @@ function ClothesPage() {
                 className="group relative bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/60 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
               >
                 {item.badge && (
-                  <div className={`absolute top-4 left-4 z-10 px-4 py-1.5 rounded-full text-white text-xs font-bold shadow-lg ${
+                  <div
+                    className={`absolute top-4 left-4 z-10 px-4 py-1.5 rounded-full text-white text-xs font-bold shadow-lg ${
                       item.badge === "Premium"
                         ? "bg-gradient-to-r from-purple-600 to-pink-600"
                         : item.badge === "New"
@@ -226,9 +265,14 @@ function ClothesPage() {
                         : item.badge === "Popular"
                         ? "bg-gradient-to-r from-orange-600 to-amber-600"
                         : "bg-gradient-to-r from-violet-600 to-fuchsia-600"
-                    }`}>
-                    {item.badge === "Bestseller" && <TrendingUp className="w-3 h-3 inline mr-1" />}
-                    {item.badge === "Premium" && <Sparkles className="w-3 h-3 inline mr-1" />}
+                    }`}
+                  >
+                    {item.badge === "Bestseller" && (
+                      <TrendingUp className="w-3 h-3 inline mr-1" />
+                    )}
+                    {item.badge === "Premium" && (
+                      <Sparkles className="w-3 h-3 inline mr-1" />
+                    )}
                     {item.badge}
                   </div>
                 )}
@@ -239,7 +283,9 @@ function ClothesPage() {
                 >
                   <Heart
                     className={`w-5 h-5 ${
-                      favorites.has(item.id) ? "fill-rose-500 text-rose-500" : "text-slate-400"
+                      favorites.has(item.id)
+                        ? "fill-rose-500 text-rose-500"
+                        : "text-slate-400"
                     } transition-colors`}
                   />
                 </button>
@@ -262,8 +308,12 @@ function ClothesPage() {
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-2">
                     <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                    <span className="text-sm font-semibold text-slate-700">{item.rating}</span>
-                    <span className="text-sm text-slate-400">({item.reviews} reviews)</span>
+                    <span className="text-sm font-semibold text-slate-700">
+                      {item.rating}
+                    </span>
+                    <span className="text-sm text-slate-400">
+                      ({item.reviews} reviews)
+                    </span>
                   </div>
 
                   <h3 className="text-2xl font-bold text-slate-800 mb-1 group-hover:text-violet-600 transition-colors">
@@ -277,7 +327,9 @@ function ClothesPage() {
                         {item.price}
                       </span>
                       {item.originalPrice && (
-                        <span className="text-sm text-red-400 line-through">{item.originalPrice}</span>
+                        <span className="text-sm text-red-400 line-through">
+                          {item.originalPrice}
+                        </span>
                       )}
                     </div>
                     <button
@@ -324,61 +376,74 @@ function ClothesPage() {
           </div>
 
           <div>
-            <h1 className="text-4xl font-bold text-slate-800 mb-2">{selectedItem.name}</h1>
+            <h1 className="text-4xl font-bold text-slate-800 mb-2">
+              {selectedItem.name}
+            </h1>
             <p className="text-slate-500 mb-4">{selectedItem.subtitle}</p>
             <div className="flex items-center gap-2 mb-6">
               <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
-              <span className="text-slate-700 font-semibold">{selectedItem.rating} ({selectedItem.reviews} reviews)</span>
+              <span className="text-slate-700 font-semibold">
+                {selectedItem.rating} ({selectedItem.reviews} reviews)
+              </span>
             </div>
 
             <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-              Discover the perfect blend of style and comfort. Made from premium quality materials with modern cuts and lasting durability.
+              Discover the perfect blend of style and comfort. Made from premium
+              quality materials with modern cuts and lasting durability.
             </p>
 
             <div className="flex items-center gap-3 mb-8">
-              <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">{selectedItem.price}</span>
-              {selectedItem.originalPrice && <span className="text-xl text-red-400 line-through">{selectedItem.originalPrice}</span>}
+              <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
+                {selectedItem.price}
+              </span>
+              {selectedItem.originalPrice && (
+                <span className="text-xl text-red-400 line-through">
+                  {selectedItem.originalPrice}
+                </span>
+              )}
             </div>
-
             <button
-  onClick={() => {
-    if (!selectedItem.inStock) return;
-
-    // Load existing cart
-    const storedCart = JSON.parse(localStorage.getItem("/cart")) || [];
-
-    // Check if item already exists in cart
-    const existingItemIndex = storedCart.findIndex(item => item.id === selectedItem.id);
-    if (existingItemIndex !== -1) {
-      storedCart[existingItemIndex].quantity += 1; // increase quantity
-    } else {
-      storedCart.push({ ...selectedItem, quantity: 1 });
-    }
-
-    // Save back to localStorage
-    localStorage.setItem("/cart", JSON.stringify(storedCart));
-
-    // Navigate to Cart Page
-    window.location.href = `/cart`;
-  }}
-  className="px-8 py-4 rounded-2xl font-semibold bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-lg hover:shadow-2xl hover:scale-105 transition-all"
->
-  Add to Cart
-</button>
+              onClick={() => {
+                if (!selectedItem.inStock) return;
+                const storedCart =
+                  JSON.parse(localStorage.getItem("/cart")) || [];
+                const existingItemIndex = storedCart.findIndex(
+                  (item) => item.id === selectedItem.id
+                
+                );
+                if (existingItemIndex !== -1) {
+                  storedCart[existingItemIndex].quantity += 1;
+                } else {
+                  storedCart.push({ ...selectedItem, quantity: 1 });
+                }
+                localStorage.setItem("/cart", JSON.stringify(storedCart));
+                window.dispatchEvent(new Event("storage"));
+                window.location.href = "/cart";
+              }}
+              className="px-8 py-4 rounded-2xl font-semibold bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-lg hover:shadow-2xl hover:scale-105 transition-all"
+            >
+              Add to Cart
+            </button>
 
             {/* UI/UX Highlights */}
             <div className="mt-10 flex gap-6">
               <div className="flex items-center gap-2 bg-violet-100 p-4 rounded-xl shadow-md">
                 <Shield className="w-6 h-6 text-violet-600" />
-                <span className="text-slate-700 font-medium">Secure Checkout</span>
+                <span className="text-slate-700 font-medium">
+                  Secure Checkout
+                </span>
               </div>
               <div className="flex items-center gap-2 bg-purple-100 p-4 rounded-xl shadow-md">
                 <Truck className="w-6 h-6 text-purple-600" />
-                <span className="text-slate-700 font-medium">Fast Delivery</span>
+                <span className="text-slate-700 font-medium">
+                  Fast Delivery
+                </span>
               </div>
               <div className="flex items-center gap-2 bg-fuchsia-100 p-4 rounded-xl shadow-md">
                 <Zap className="w-6 h-6 text-fuchsia-600" />
-                <span className="text-slate-700 font-medium">Premium Quality</span>
+                <span className="text-slate-700 font-medium">
+                  Premium Quality
+                </span>
               </div>
             </div>
           </div>
