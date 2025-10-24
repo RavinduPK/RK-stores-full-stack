@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from "react";
+import image from "../assets/hummer.jpeg";
+import image1 from "../assets/drill.jpeg";
+import image2 from "../assets/drive.jpeg";
+import image3 from "../assets/tape.jpeg";
+import image4 from "../assets/screw.jpeg";
+import image5 from "../assets/tool.jpeg";
 import {
   ArrowLeft,
   Search,
@@ -22,7 +28,7 @@ const toolsData = [
     price: "$15",
     rating: 4.7,
     reviews: 543,
-    img: "https://images.unsplash.com/photo-1581093806997-124204d9fa89?q=80&w=1200&auto=format&fit=crop",
+    img: image,
     badge: "Bestseller",
     inStock: true,
   },
@@ -33,7 +39,7 @@ const toolsData = [
     price: "$20",
     rating: 4.8,
     reviews: 432,
-    img: "https://images.unsplash.com/photo-1595278069441-2f9b391d4bdb?q=80&w=1200&auto=format&fit=crop",
+    img: image2,
     inStock: true,
   },
   {
@@ -43,7 +49,7 @@ const toolsData = [
     price: "$65",
     rating: 4.9,
     reviews: 876,
-    img: "https://images.unsplash.com/photo-1607860108855-5d43f0e87d75?q=80&w=1200&auto=format&fit=crop",
+    img: image1,
     badge: "Premium",
     inStock: true,
   },
@@ -54,7 +60,7 @@ const toolsData = [
     price: "$8",
     rating: 4.5,
     reviews: 321,
-    img: "https://images.unsplash.com/photo-1611930022073-3f89b6e22b4c?q=80&w=1200&auto=format&fit=crop",
+    img: image3,
     inStock: true,
   },
   {
@@ -64,7 +70,7 @@ const toolsData = [
     price: "$35",
     rating: 4.7,
     reviews: 654,
-    img: "https://images.unsplash.com/photo-1633158829571-8f8aeecc65c1?q=80&w=1200&auto=format&fit=crop",
+    img: image4,
     badge: "Pro Choice",
     inStock: true,
   },
@@ -75,7 +81,7 @@ const toolsData = [
     price: "$45",
     rating: 4.6,
     reviews: 398,
-    img: "https://images.unsplash.com/photo-1606379229235-574da5b1c7ef?q=80&w=1200&auto=format&fit=crop",
+    img: image5,
     inStock: false,
   },
 ];
@@ -162,7 +168,7 @@ function ToolsPage() {
                   {favorites.size}
                 </span>
               </button>
-              <button className="relative p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md">
+              <button onClick={() => window.location.href = "/cart"} className="relative p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md">
                 <ShoppingCart className="w-5 h-5 text-amber-700" />
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-amber-600 text-white text-xs rounded-full flex items-center justify-center">
                   {cartItems.length}

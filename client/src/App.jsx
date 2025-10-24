@@ -24,6 +24,7 @@ import CartPage from './pages/cartPage.jsx';
 import PurchasePage from './pages/purchasePage.jsx';
 import PrivacyPage from './pages/privacyPage.jsx';
 import AboutUs from './pages/aboutUs.jsx';  
+import CallPage from './pages/callPage.jsx';
 
 
 const annonymy = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN0c2Jwa2JoZnZ6ZGNta21raWF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyMjAwMTksImV4cCI6MjA3MTc5NjAxOX0.YeRpo0f0aLq1TtzMHcaPfSKKNf7rnhohxag9qPI8hEc";
@@ -61,6 +62,8 @@ function App() {
         <Route path="/purchase" element={<PurchasePage />} /> {/* Adding PurchasePage route */}
         <Route path="/privacy" element={<PrivacyPage />} /> {/* Adding PrivacyPage route */}
         <Route path="/aboutUs1" element={<AboutUs />} /> {/* Adding AboutUs route */}
+        <Route path="/call" element={<CallPage />} /> {/* Adding CallPage route */}
+       
       
 
       </Routes>

@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from "react";
+import image from "../assets/teddy.jpeg";
+import image1 from "../assets/wood.jpeg";
+import image2 from "../assets/car.jpeg";
+import image3 from "../assets/puzzle.jpeg";
+import image4 from "../assets/action.jpeg";
 import {
   ArrowLeft,
   Search,
@@ -23,7 +28,7 @@ const toyItems = [
     price: "$29",
     rating: 4.9,
     reviews: 1567,
-    img: "https://images.unsplash.com/photo-1627132804266-31cf55bd1eb5?q=80&w=1200&auto=format&fit=crop",
+    img: image,
     badge: "Bestseller",
     inStock: true,
   },
@@ -34,7 +39,7 @@ const toyItems = [
     price: "$35",
     rating: 4.8,
     reviews: 892,
-    img: "https://images.unsplash.com/photo-1549921296-3fdc7c2e6b36?q=80&w=1200&auto=format&fit=crop",
+    img: image1,
     badge: "Educational",
     inStock: true,
   },
@@ -45,7 +50,7 @@ const toyItems = [
     price: "$19",
     rating: 4.6,
     reviews: 1234,
-    img: "https://images.unsplash.com/photo-1616348436160-0b75d2c2b3c8?q=80&w=1200&auto=format&fit=crop",
+    img: image2,
     inStock: true,
   },
   {
@@ -66,7 +71,7 @@ const toyItems = [
     price: "$25",
     rating: 4.7,
     reviews: 765,
-    img: "https://images.unsplash.com/photo-1524492449090-1a065f6aecd4?q=80&w=1200&auto=format&fit=crop",
+    img: image3,
     inStock: true,
   },
   {
@@ -76,7 +81,7 @@ const toyItems = [
     price: "$45",
     rating: 4.8,
     reviews: 1876,
-    img: "https://images.unsplash.com/photo-1606811841683-f017f19a8c30?q=80&w=1200&auto=format&fit=crop",
+    img: image4,
     badge: "New",
     inStock: true,
   },
@@ -166,7 +171,7 @@ function ToysPage() {
                   {favorites.size}
                 </span>
               </button>
-              <button className="relative p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md">
+              <button onClick={() => window.location.href = "/cart"} className="relative p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md">
                 <ShoppingCart className="w-5 h-5 text-orange-600" />
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-orange-500 text-white text-xs rounded-full flex items-center justify-center">
                   {cartItems.length}

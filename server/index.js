@@ -138,7 +138,26 @@ app.post(
       console.error(error);
       res.status(500).json({ error: "Server error" });
     }
+    const handleLogin = async (e) => {
+  e.preventDefault();
+  const res = await fetch("http://localhost:5000/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+  const data = await res.json();
+
+  if (data.token) {
+    localStorage.setItem("token", data.token); // save JWT
+    window.location.href = "/dashboard"; // go to dashboard
+  } else {
+    alert(data.error || "Login failed");
   }
+};
+  }
+  
+
+  
 );
 
 // --------------------- CONTACT ROUTE ---------------------
@@ -164,6 +183,9 @@ app.post(
       res.status(500).json({ error: "Server error" });
     }
   }
+
+
+  
 );
 
 // --------------------- PROFILE ROUTE ---------------------
@@ -211,3 +233,6 @@ app.get("/orders", authMiddleware, async (req, res) => {
     res.status(500).json({ error: "Failed to fetch orders" });
   }
 });
+
+
+

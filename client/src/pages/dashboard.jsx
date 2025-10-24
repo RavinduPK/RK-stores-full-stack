@@ -83,50 +83,275 @@ function Dashboard() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-x-hidden">
       
       {/* Enhanced Navigation Bar */}
-      <nav className="backdrop-blur-2xl bg-white/70 border-b border-white/30 sticky top-0 z-50 transition-all duration-500 shadow-lg shadow-blue-500/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            {/* Enhanced Logo */}
-            <div className="flex items-center space-x-3 group">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                  <span className="text-white font-black text-lg">RK</span>
-                </div>
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl opacity-20 group-hover:opacity-40 transition-opacity blur-sm"></div>
-              </div>
-              <div>
-                <span className="text-2xl font-black bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 bg-clip-text text-transparent">
-                  RK Stores
-                </span>
-                <div className="text-xs text-blue-600 font-medium">Premium Collection</div>
-              </div>
-            </div>
-
-            {/* Enhanced Action Buttons */}
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => window.location.href = '/profile'}
-                className="relative group p-3 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
-              >
-                <CgProfile className="w-6 h-6" />
-                <div className="absolute -top-2 -right-2 w-5 h-5 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center">
-                  <span className="text-xs font-bold text-white">3</span>
-                </div>
-                <div className="absolute inset-0 rounded-2xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              </button>
-
-              <button
-                onClick={() => window.location.href = '/login'}
-                className="relative group p-3 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
-              >
-                <MdLogout className="w-6 h-6" />
-                <div className="absolute inset-0 rounded-2xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              </button>
-            </div>
+     <nav className="backdrop-blur-2xl bg-white/70 border-b border-white/30 sticky top-0 z-50 transition-all duration-500 shadow-lg shadow-blue-500/5 animate-nav-slide-down">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex justify-between items-center h-20">
+      {/* Enhanced Animated Logo */}
+      <div className="flex items-center space-x-3 group cursor-pointer animate-fade-in-left">
+        <div className="relative">
+          {/* Rotating gradient ring */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-2xl opacity-75 group-hover:opacity-100 blur-sm animate-spin-slow"></div>
+          
+          {/* Logo with float animation */}
+          <div className="relative w-12 h-12 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all duration-300 group-hover:scale-110 animate-float">
+            <span className="text-white font-black text-lg group-hover:rotate-12 transition-transform duration-300 animate-pulse-text">
+              RK
+            </span>
+          </div>
+          
+          {/* Outer glow pulse */}
+          <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity blur-lg animate-ping-slow"></div>
+        </div>
+        
+        <div className="animate-fade-in-left animation-delay-100">
+          <span className="text-2xl font-black bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 bg-clip-text text-transparent animate-gradient-flow bg-[length:200%_100%] group-hover:scale-105 transition-transform duration-300 inline-block">
+            RK Stores
+          </span>
+          <div className="text-xs text-blue-600 font-medium group-hover:text-indigo-600 transition-colors duration-300 flex items-center gap-1">
+          
+            Premium Collection
           </div>
         </div>
-      </nav>
+      </div>
 
+      {/* Enhanced Action Buttons with Animations */}
+      <div className="flex items-center space-x-4 animate-fade-in-right">
+        {/* Profile Button */}
+        <button
+          onClick={() => window.location.href = '/profile'}
+          className="relative group p-3 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110 hover:-translate-y-1 overflow-hidden animate-bounce-in animation-delay-200"
+        >
+          {/* Shimmer effect */}
+          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"></div>
+          
+          {/* Icon with rotation */}
+          <CgProfile className="w-6 h-6 relative z-10 group-hover:rotate-[360deg] transition-transform duration-500" />
+          
+          {/* Animated notification badge */}
+          <div className="absolute -top-2 -right-2 w-5 h-5 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center animate-badge-pulse shadow-lg shadow-red-500/50">
+            <span className="text-xs font-bold text-white animate-number-bounce">3</span>
+          </div>
+          
+          {/* Ripple on hover */}
+          <div className="absolute inset-0 rounded-2xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity scale-0 group-hover:scale-100 duration-300"></div>
+          
+          {/* Border glow */}
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-2xl opacity-0 group-hover:opacity-75 blur transition-opacity duration-300"></div>
+        </button>
+
+        {/* Logout Button */}
+        <button
+          onClick={() => window.location.href = '/login'}
+          className="relative group p-3 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110 hover:-translate-y-1 overflow-hidden animate-bounce-in animation-delay-300"
+        >
+          {/* Shimmer effect */}
+          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"></div>
+          
+          {/* Icon with slide animation */}
+          <MdLogout className="w-6 h-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+          
+          {/* Ripple on hover */}
+          <div className="absolute inset-0 rounded-2xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity scale-0 group-hover:scale-100 duration-300"></div>
+          
+          {/* Border glow */}
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-2xl opacity-0 group-hover:opacity-75 blur transition-opacity duration-300"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <style jsx>{`
+    @keyframes nav-slide-down {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fade-in-left {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fade-in-right {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes spin-slow {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes ping-slow {
+      0% {
+        transform: scale(1);
+        opacity: 0.2;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0.2;
+      }
+    }
+
+    @keyframes pulse-text {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes gradient-flow {
+      0% {
+        background-position: 0% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
+
+    @keyframes sparkle {
+      0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.3) rotate(180deg);
+        opacity: 0.7;
+      }
+    }
+
+    @keyframes bounce-in {
+      0% {
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.1) rotate(10deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes badge-pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    @keyframes number-bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-2px);
+      }
+    }
+
+    .animate-nav-slide-down {
+      animation: nav-slide-down 0.6s ease-out;
+    }
+
+    .animate-fade-in-left {
+      animation: fade-in-left 0.6s ease-out;
+    }
+
+    .animate-fade-in-right {
+      animation: fade-in-right 0.6s ease-out;
+    }
+
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .animate-spin-slow {
+      animation: spin-slow 4s linear infinite;
+    }
+
+    .animate-ping-slow {
+      animation: ping-slow 2s ease-in-out infinite;
+    }
+
+    .animate-pulse-text {
+      animation: pulse-text 2s ease-in-out infinite;
+    }
+
+    .animate-gradient-flow {
+      animation: gradient-flow 4s linear infinite;
+      background-size: 200% 100%;
+    }
+
+    .animate-sparkle {
+      display: inline-block;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+
+    .animate-bounce-in {
+      animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .animate-badge-pulse {
+      animation: badge-pulse 1s ease-in-out infinite;
+    }
+
+    .animate-number-bounce {
+      animation: number-bounce 0.5s ease-in-out infinite;
+    }
+
+    .animation-delay-100 {
+      animation-delay: 0.1s;
+    }
+
+    .animation-delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .animation-delay-300 {
+      animation-delay: 0.3s;
+    }
+  `}</style>
+</nav>
       {/* Enhanced Hero Section */}
       <div className="relative overflow-hidden" style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
         {/* Animated Background Elements */}
@@ -599,6 +824,7 @@ function Dashboard() {
                 {['Home', 'Products', 'About', 'Contact'].map((link) => (
                   <a key={link} href="#" className="block text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-1">
                     {link}
+                    
                   </a>
                 ))}
               </div>
@@ -624,9 +850,9 @@ function Dashboard() {
             </div>
             
             <div className="flex items-center space-x-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-white transition-colors">Cookies</a>
+              <button onClick={() => window.location.href = '/privacy'} className="hover:text-white transition-colors">Privacy Policy</button>
+              <button onClick={() => window.location.href = '/aboutUs1'} className="hover:text-white transition-colors">Terms of Service</button>
+              <button onClick={() => window.location.href = '/cookies'} className="hover:text-white transition-colors">Cookies</button>
             </div>
           </div>
         </div>

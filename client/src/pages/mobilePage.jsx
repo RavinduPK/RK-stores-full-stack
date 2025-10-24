@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from "react";
+import image from "../assets/15 pro.jpeg";
+import image1 from "../assets/S23.jpeg";
+import image2 from "../assets/pixel.jpeg";
+import image3 from "../assets/oneplus.jpeg";
+import image4 from "../assets/sony.jpeg";
+import image5 from "../assets/mag.jpeg";
 import {
   ArrowLeft,
   Search,
@@ -22,7 +28,7 @@ const mobileItems = [
     price: "$999",
     rating: 4.9,
     reviews: 1243,
-    img: "https://images.unsplash.com/photo-1695048137881-b65f5d6a2dff?q=80&w=1200&auto=format&fit=crop",
+    img: image,
     badge: "Premium",
     inStock: true,
   },
@@ -33,7 +39,7 @@ const mobileItems = [
     price: "$899",
     rating: 4.8,
     reviews: 987,
-    img: "https://images.unsplash.com/photo-1610945265070-d91e0f55fd40?q=80&w=1200&auto=format&fit=crop",
+    img: image1,
     badge: "Bestseller",
     inStock: true,
   },
@@ -44,7 +50,7 @@ const mobileItems = [
     price: "$799",
     rating: 4.7,
     reviews: 654,
-    img: "https://images.unsplash.com/photo-1707343848635-21b11de58c89?q=80&w=1200&auto=format&fit=crop",
+    img: image2,
     inStock: true,
   },
   {
@@ -54,7 +60,7 @@ const mobileItems = [
     price: "$699",
     rating: 4.6,
     reviews: 432,
-    img: "https://images.unsplash.com/photo-1697577411033-9d4d9a02461b?q=80&w=1200&auto=format&fit=crop",
+    img: image3,
     badge: "Hot Deal",
     inStock: true,
   },
@@ -65,7 +71,7 @@ const mobileItems = [
     price: "$349",
     rating: 4.9,
     reviews: 2156,
-    img: "https://images.unsplash.com/photo-1606227543848-6e162c2510f2?q=80&w=1200&auto=format&fit=crop",
+    img: image4,
     inStock: true,
   },
   {
@@ -75,7 +81,7 @@ const mobileItems = [
     price: "$59",
     rating: 4.5,
     reviews: 324,
-    img: "https://images.unsplash.com/photo-1624705002806-3c31c52a4da4?q=80&w=1200&auto=format&fit=crop",
+    img: image5,
     inStock: true,
   },
 ];
@@ -162,7 +168,7 @@ function MobilePage() {
                   {favorites.size}
                 </span>
               </button>
-              <button className="relative p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md">
+              <button onClick={() => window.location.href = "/cart"} className="relative p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md">
                 <ShoppingCart className="w-5 h-5 text-indigo-700" />
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-indigo-600 text-white text-xs rounded-full flex items-center justify-center">
                   {cartItems.length}
