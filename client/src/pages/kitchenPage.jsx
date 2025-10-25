@@ -147,39 +147,41 @@ function KitchenPage() {
         </div>
 
         {/* Header */}
-        <nav className="relative z-20 backdrop-blur-xl bg-white/40 border-b border-white/60 shadow-lg sticky top-0">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
-            <button
-              onClick={() => window.history.back()}
-              className="group flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-600 to-rose-600 text-white shadow-lg hover:scale-105 transition-all duration-300"
-            >
-              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-              <span className="font-medium">Back</span>
-            </button>
+       <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/70 border-b border-white/60 shadow-md">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between flex-wrap gap-3">
+    <button
+      onClick={() => window.history.back()}
+      className="group flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-r from-orange-600 to-rose-600 text-white shadow-lg hover:scale-105 transition-all text-sm sm:text-base"
+    >
+      <ArrowLeft className="w-4 sm:w-5 h-4 sm:h-5 group-hover:-translate-x-1 transition-transform" />
+      <span className="font-medium hidden sm:block">Back</span>
+    </button>
 
-            <div className="flex items-center gap-3 sm:gap-4">
-              <button className="relative p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md">
-                <Heart className="w-5 h-5 text-rose-600" />
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-rose-500 text-white text-xs rounded-full flex items-center justify-center">
-                  {favorites.size}
-                </span>
-              </button>
-              <button
-                onClick={() => (window.location.href = "/cart")}
-                className="relative p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md"
-              >
-                <ShoppingCart className="w-5 h-5 text-orange-700" />
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-orange-600 text-white text-xs rounded-full flex items-center justify-center">
-                  {cartItems.length}
-                </span>
-              </button>
-            </div>
-          </div>
-        </nav>
+    <div className="flex items-center gap-2 sm:gap-4">
+      <button className="relative p-2 sm:p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md">
+        <Heart className="w-5 h-5 text-rose-600" />
+        <span className="absolute -top-1 -right-1 w-5 h-5 bg-rose-500 text-white text-xs rounded-full flex items-center justify-center">
+          {favorites.size}
+        </span>
+      </button>
+
+      <button
+        onClick={() => (window.location.href = "/cart")}
+        className="relative p-2 sm:p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md"
+      >
+        <ShoppingCart className="w-5 h-5 text-orange-700" />
+        <span className="absolute -top-1 -right-1 w-5 h-5 bg-orange-600 text-white text-xs rounded-full flex items-center justify-center">
+          {cartItems.length}
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
 
         {/* Hero Section */}
-        <section className="relative z-10 text-center pt-16 pb-12 px-4 sm:px-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-rose-100 border border-orange-200 mb-6 animate-bounce text-sm sm:text-base">
+        <section className="relative z-10 text-center pt-28 sm:pb-12 px-4 sm:px-6">
+          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r from-orange-100 to-rose-100 border border-orange-200 mb-6 animate-bounce text-sm sm:text-base">
             <Flame className="w-4 h-4 text-orange-600" />
             <span className="font-semibold text-orange-700">
               Flash Sale — Up to 40% off kitchen must-haves!

@@ -10,8 +10,6 @@ import {
   ShoppingCart,
   Heart,
   Star,
-  Trophy,
-  Sparkles,
   Smile,
   Shield,
   Truck,
@@ -92,11 +90,10 @@ function ToysPage() {
   const [favorites, setFavorites] = useState(new Set());
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredToys, setFilteredToys] = useState(toyItems);
-  const [page, setPage] = useState("main"); // "main" | "details"
+  const [page, setPage] = useState("main");
   const [selectedItem, setSelectedItem] = useState(null);
   const [cartItems, setCartItems] = useState([]);
 
-  // Load cart from localStorage
   useEffect(() => {
     const updateCart = () => {
       const stored = JSON.parse(localStorage.getItem("/cart")) || [];
@@ -107,7 +104,6 @@ function ToysPage() {
     return () => window.removeEventListener("storage", updateCart);
   }, []);
 
-  // Filter + search logic
   useEffect(() => {
     let filtered = toyItems;
 
@@ -142,10 +138,10 @@ function ToysPage() {
 
   const handleBack = () => setPage("main");
 
-  // --------------- MAIN PAGE ----------------
+  // ------------------ MAIN PAGE ------------------
   if (page === "main") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50 relative overflow-hidden">
+      <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50 relative">
         {/* Background Blurs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-80 h-80 bg-yellow-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
@@ -154,64 +150,72 @@ function ToysPage() {
         </div>
 
         {/* Header */}
-        <nav className="relative z-20 backdrop-blur-xl bg-white/40 border-b border-white/60 shadow-lg sticky top-0">
-          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <button
-              onClick={() => window.history.back()}
-              className="group flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-yellow-600 to-orange-600 text-white shadow-lg hover:scale-105 transition-all duration-300"
-            >
-              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-              <span className="font-medium">Back</span>
-            </button>
+        <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/70 border-b border-white/60 shadow-md">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between flex-wrap gap-3">
+    <button
+      onClick={() => window.history.back()}
+      className="group flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-r from-yellow-600 to-orange-600 text-white shadow-lg hover:scale-105 transition-all text-sm sm:text-base"
+    >
+      <ArrowLeft className="w-4 sm:w-5 h-4 sm:h-5 group-hover:-translate-x-1 transition-transform" />
+      <span className="font-medium hidden sm:block">Back</span>
+    </button>
 
-            <div className="flex items-center gap-4">
-              <button className="relative p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md">
-                <Heart className="w-5 h-5 text-rose-600" />
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-rose-500 text-white text-xs rounded-full flex items-center justify-center">
-                  {favorites.size}
-                </span>
-              </button>
-              <button onClick={() => window.location.href = "/cart"} className="relative p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md">
-                <ShoppingCart className="w-5 h-5 text-orange-600" />
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-orange-500 text-white text-xs rounded-full flex items-center justify-center">
-                  {cartItems.length}
-                </span>
-              </button>
-            </div>
-          </div>
-        </nav>
+    <div className="flex items-center gap-2 sm:gap-4">
+      <button className="relative p-2 sm:p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md">
+        <Heart className="w-5 h-5 text-rose-600" />
+        <span className="absolute -top-1 -right-1 w-5 h-5 bg-rose-500 text-white text-xs rounded-full flex items-center justify-center">
+          {favorites.size}
+        </span>
+      </button>
+
+      <button
+        onClick={() => (window.location.href = "/cart")}
+        className="relative p-2 sm:p-3 rounded-full bg-white/60 border hover:bg-white/80 transition-all shadow-md"
+      >
+        <ShoppingCart className="w-5 h-5 text-orange-600" />
+        <span className="absolute -top-1 -right-1 w-5 h-5 bg-orange-500 text-white text-xs rounded-full flex items-center justify-center">
+          {cartItems.length}
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
 
         {/* Hero Section */}
-        <section className="relative z-10 text-center pt-16 pb-12 px-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-yellow-100 to-orange-100 border border-yellow-200 mb-6 animate-bounce">
+        <section className="relative z-10 text-center pt-28 sm:pb-12 px-4 sm:px-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-yellow-100 to-orange-100 border border-yellow-200 mb-6 animate-bounce text-sm sm:text-base">
             <Smile className="w-4 h-4 text-yellow-600" />
-            <span className="text-sm font-semibold text-yellow-700">
+            <span className="font-semibold text-yellow-700">
               20% off on educational toys this week!
             </span>
           </div>
-          <h1 className="text-6xl md:text-7xl font-black tracking-tight mb-4">
+
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight mb-4">
             <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 via-orange-600 to-pink-600 animate-gradient">
               Toys Collection
             </span>
           </h1>
-          <p className="text-xl text-slate-600 font-light max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-slate-600 font-light max-w-2xl mx-auto">
             Spark creativity and fun for every child 🎠
           </p>
 
           {/* Search */}
-          <div className="mt-10 max-w-3xl mx-auto">
+          <div className="mt-8 md:mt-10 max-w-3xl mx-auto">
             <div className="group relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-yellow-600 via-orange-600 to-pink-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition"></div>
-              <div className="relative flex items-center gap-3 bg-white/80 backdrop-blur-xl rounded-3xl p-3 shadow-2xl border border-white/60">
-                <Search className="w-6 h-6 text-slate-400 ml-3" />
-                <input
-                  type="text"
-                  placeholder="Search teddy, lego, puzzles..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="flex-1 bg-transparent outline-none text-lg placeholder-slate-400 text-slate-800"
-                />
-                <button className="px-8 py-3 rounded-2xl font-semibold bg-gradient-to-r from-yellow-600 to-orange-600 text-white shadow-lg hover:scale-105 transition-all">
+              <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-white/80 backdrop-blur-xl rounded-3xl p-3 shadow-2xl border border-white/60">
+                <div className="flex items-center gap-3 flex-1">
+                  <Search className="w-6 h-6 text-slate-400 ml-2" />
+                  <input
+                    type="text"
+                    placeholder="Search teddy, lego, puzzles..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="flex-1 bg-transparent outline-none text-base sm:text-lg placeholder-slate-400 text-slate-800"
+                  />
+                </div>
+                <button className="px-6 sm:px-8 py-3 rounded-2xl font-semibold bg-gradient-to-r from-yellow-600 to-orange-600 text-white shadow-lg hover:scale-105 transition-all">
                   Search
                 </button>
               </div>
@@ -219,12 +223,12 @@ function ToysPage() {
           </div>
 
           {/* Filters */}
-          <div className="mt-8 flex flex-wrap gap-3 justify-center">
+          <div className="mt-6 sm:mt-8 flex flex-wrap gap-2 sm:gap-3 justify-center">
             {filters.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedFilter(cat)}
-                className={`px-6 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 ${
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-2xl text-sm font-semibold transition-all duration-300 ${
                   selectedFilter === cat
                     ? "bg-gradient-to-r from-yellow-600 to-orange-600 text-white shadow-lg scale-105"
                     : "bg-white/70 text-slate-700 border border-slate-200 hover:bg-white hover:shadow-md hover:scale-105"
@@ -237,8 +241,8 @@ function ToysPage() {
         </section>
 
         {/* Grid */}
-        <section className="max-w-7xl mx-auto px-6 py-12">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredToys.map((item) => (
               <div
                 key={item.id}
@@ -271,7 +275,7 @@ function ToysPage() {
                   />
                 </button>
 
-                <div className="relative overflow-hidden h-80">
+                <div className="relative overflow-hidden h-64 sm:h-72 md:h-80">
                   <img
                     src={item.img}
                     alt={item.name}
@@ -279,7 +283,7 @@ function ToysPage() {
                   />
                 </div>
 
-                <div className="p-6">
+                <div className="p-5 sm:p-6">
                   <div className="flex items-center gap-2 mb-2">
                     <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
                     <span className="text-sm font-semibold text-slate-700">
@@ -289,19 +293,19 @@ function ToysPage() {
                       ({item.reviews} reviews)
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-800 mb-1">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-1">
                     {item.name}
                   </h3>
                   <p className="text-slate-500 mb-4">{item.subtitle}</p>
 
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-orange-600">
+                    <span className="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-orange-600">
                       {item.price}
                     </span>
                     <button
                       disabled={!item.inStock}
                       onClick={() => handleAddToCart(item)}
-                      className={`px-6 py-3 rounded-xl font-semibold shadow-lg flex items-center gap-2 transition-all ${
+                      className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold shadow-lg flex items-center gap-2 transition-all ${
                         item.inStock
                           ? "bg-gradient-to-r from-yellow-600 to-orange-600 text-white hover:scale-105"
                           : "bg-gray-300 text-gray-500 cursor-not-allowed"
@@ -320,43 +324,43 @@ function ToysPage() {
     );
   }
 
-  // --------------- DETAILS PAGE ----------------
+  // ------------------ DETAILS PAGE ------------------
   if (page === "details" && selectedItem) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50 p-10">
+      <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50 p-4 sm:p-6 md:p-10">
         <button
           onClick={handleBack}
-          className="flex items-center gap-2 mb-8 px-5 py-2 rounded-full bg-gradient-to-r from-yellow-600 to-orange-600 text-white shadow-lg hover:scale-105 transition-all"
+          className="flex items-center gap-2 mb-6 sm:mb-8 px-4 sm:px-5 py-2 rounded-full bg-gradient-to-r from-yellow-600 to-orange-600 text-white shadow-lg hover:scale-105 transition-all"
         >
           <ArrowLeft className="w-5 h-5" />
           Back
         </button>
 
-        <div className="grid md:grid-cols-2 gap-10 bg-white/80 rounded-3xl shadow-xl border border-white/60 p-6 backdrop-blur-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 bg-white/80 rounded-3xl shadow-xl border border-white/60 p-4 sm:p-6 md:p-10 backdrop-blur-xl">
           <img
             src={selectedItem.img}
             alt={selectedItem.name}
-            className="rounded-2xl w-full h-full object-cover"
+            className="rounded-2xl w-full h-auto max-h-[500px] object-cover"
           />
 
           <div>
-            <h1 className="text-4xl font-bold text-slate-800 mb-2">
+            <h1 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-2">
               {selectedItem.name}
             </h1>
             <p className="text-slate-500 mb-4">{selectedItem.subtitle}</p>
             <div className="flex items-center gap-2 mb-6">
               <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
-              <span className="text-slate-700 font-semibold">
+              <span className="text-slate-700 font-semibold text-sm sm:text-base">
                 {selectedItem.rating} ({selectedItem.reviews} reviews)
               </span>
             </div>
-            <p className="text-lg text-slate-600 mb-6">
+            <p className="text-base sm:text-lg text-slate-600 mb-6">
               A perfect gift for children of all ages — designed to bring smiles,
               inspire creativity, and ensure hours of fun!
             </p>
 
             <div className="flex items-center gap-3 mb-8">
-              <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-orange-600">
+              <span className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-orange-600">
                 {selectedItem.price}
               </span>
             </div>
@@ -371,21 +375,21 @@ function ToysPage() {
                 window.dispatchEvent(new Event("storage"));
                 window.location.href = "/cart";
               }}
-              className="px-8 py-4 rounded-2xl font-semibold bg-gradient-to-r from-yellow-600 to-orange-600 text-white shadow-lg hover:scale-105 transition-all"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold bg-gradient-to-r from-yellow-600 to-orange-600 text-white shadow-lg hover:scale-105 transition-all"
             >
               Add to Cart
             </button>
 
-            <div className="mt-10 flex gap-6">
-              <div className="flex items-center gap-2 bg-yellow-100 p-4 rounded-xl shadow-md">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6">
+              <div className="flex items-center gap-2 bg-yellow-100 p-3 sm:p-4 rounded-xl shadow-md">
                 <Shield className="w-6 h-6 text-yellow-700" />
                 <span>Secure Checkout</span>
               </div>
-              <div className="flex items-center gap-2 bg-orange-100 p-4 rounded-xl shadow-md">
+              <div className="flex items-center gap-2 bg-orange-100 p-3 sm:p-4 rounded-xl shadow-md">
                 <Truck className="w-6 h-6 text-orange-700" />
                 <span>Fast Delivery</span>
               </div>
-              <div className="flex items-center gap-2 bg-pink-100 p-4 rounded-xl shadow-md">
+              <div className="flex items-center gap-2 bg-pink-100 p-3 sm:p-4 rounded-xl shadow-md">
                 <Zap className="w-6 h-6 text-pink-700" />
                 <span>Premium Quality</span>
               </div>

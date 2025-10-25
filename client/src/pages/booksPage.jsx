@@ -170,6 +170,7 @@ function BookPage() {
 
         {/* Hero */}
         <section className="text-center py-8 sm:py-10 px-4 sm:px-6">
+          
           <h1 className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
             Book Haven
           </h1>

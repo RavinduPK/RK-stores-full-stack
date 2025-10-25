@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Image from "../assets/pizza.jpg";
+import Image from "../assets/pizza.jpeg";
 import Image1 from "../assets/ice2.jpeg";
 import Image2 from "../assets/pazta.jpeg";
 import Image3 from "../assets/noodles1.jpeg";
@@ -35,7 +35,7 @@ const foods = [
     price: "$3.50",
     rating: 4.7,
     reviews: 289,
-    img: Image1,
+    img: Image,
     badge: "Popular",
     inStock: true,
   },
